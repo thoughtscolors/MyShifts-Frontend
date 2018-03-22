@@ -16,6 +16,8 @@
 	<link rel="stylesheet" type="text/css" href="./style/css1/calendar-style.css" />
 	<link rel="stylesheet" type="text/css" href="./style/css1/style.css" />
 	<link rel="stylesheet" type="text/css" href="./style/css2/pignose.calendar.min.css" />
+	<script src="./src/index.js" charset="utf-8"></script>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
 </head>
 <body>
@@ -102,7 +104,7 @@
                 var $calendar = obj.calendar;
                 var $box = $calendar.parent().siblings('.box').show();
 								let box = document.querySelector('.box')
-								let table = document.querySelector('#schedule')
+								let shifts = document.querySelector('#shifts')
                 var text = `Today's Schedule:  `;
 
                 if(date[0] !== null) {
@@ -122,7 +124,7 @@ console.log('tttttt', text)
 
 
                 $box.text(text);
-								box.appendChild(table)
+								box.appendChild(shifts)
             }
 
             // Default Calendar

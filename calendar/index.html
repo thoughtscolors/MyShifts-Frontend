@@ -63,7 +63,76 @@
 			<!-- <h3><span>Basic</span></h3> -->
             <div class="calendar"></div>
 			<div class="box" style="display:block">
-				<p>HELLLOOOOOO</p>
+				<table id="schedule">
+					<tr>
+						<th>
+							Time
+						</th>
+						<th>
+							Shifts
+						</th>
+					</tr>
+					<tr>
+						<td>
+							08:00-09:00
+						</td>
+					</tr>
+					<tr>
+						<td>
+							09:00-10:00
+						</td>
+					</tr>
+					<tr>
+						<td>
+							10:00-11:00
+						</td>
+					</tr>
+					<tr>
+						<td>
+							11:00-12:00
+						</td>
+					</tr>
+					<tr>
+						<td>
+							13:00-14:00
+						</td>
+					</tr>
+					<tr>
+						<td>
+							15:00-16:00
+						</td>
+					</tr>
+					<tr>
+						<td>
+							16:00-17:00
+						</td>
+					</tr>
+					<tr>
+						<td>
+							17:00-18:00
+						</td>
+					</tr>
+					<tr>
+						<td>
+							18:00-19:00
+						</td>
+					</tr>
+					<tr>
+						<td>
+							19:00-20:00
+						</td>
+					</tr>
+					<tr>
+						<td>
+							20:00-21:00
+						</td>
+					</tr>
+					<tr>
+						<td>
+							21:00-22:00
+						</td>
+					</tr>
+				</table>
 			</div>
 			<!-- <ul class="ui top pointing secondary menu">
 				<a href="../#" role="presentation" class="item active" data-tab="html-basic">HTML</a>
@@ -77,77 +146,6 @@
     $('.calendar').pignoseCalendar();
 });</code></pre>
 			</div>
-
-			<table id="schedule">
-				<tr>
-					<th>
-						Time
-					</th>
-					<th>
-						Shifts
-					</th>
-				</tr>
-				<tr>
-					<td>
-					  08:00-09:00
-					</td>
-				</tr>
-				<tr>
-					<td>
-					  09:00-10:00
-					</td>
-				</tr>
-				<tr>
-					<td>
-						10:00-11:00
-					</td>
-				</tr>
-				<tr>
-					<td>
-						11:00-12:00
-					</td>
-				</tr>
-				<tr>
-					<td>
-						13:00-14:00
-					</td>
-				</tr>
-				<tr>
-					<td>
-						15:00-16:00
-					</td>
-				</tr>
-				<tr>
-					<td>
-						16:00-17:00
-					</td>
-				</tr>
-				<tr>
-					<td>
-						17:00-18:00
-					</td>
-				</tr>
-				<tr>
-					<td>
-						18:00-19:00
-					</td>
-				</tr>
-				<tr>
-					<td>
-						19:00-20:00
-					</td>
-				</tr>
-				<tr>
-					<td>
-						20:00-21:00
-					</td>
-				</tr>
-				<tr>
-					<td>
-						21:00-22:00
-					</td>
-				</tr>
-			</table>
 		</div>
 	</div>
     <script type="text/javascript" src="./js/jquery.latest.min.js"></script>
@@ -197,7 +195,7 @@ console.log('tttttt', text)
 
 
                 $box.text(text);
-								// box.appendChild()
+								box.appendChild(table)
             }
 
             // Default Calendar

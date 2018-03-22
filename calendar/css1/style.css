@@ -22,6 +22,93 @@ pre, code, code span {
 	-webkit-text-shadow: none !important;
 }
 
+.input-calendar {
+	display: block;
+	width: 100%;
+	max-width: 360px;
+	margin: 0 auto;
+	height: 3.2em;
+	line-height: 3.2em;
+	font: inherit;
+	padding: 0 1.2em;
+	border: 1px solid #d8d8d8;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, .25);
+}
+
+.btn-calendar {
+	display: block;
+	width: 100%;
+	max-width: 360px;
+	height: 3.2em;
+	line-height: 3.2em;
+	background-color: #52555a;
+	margin: 0 auto;
+	font-weight: 600;
+	color: #ffffff !important;
+	text-decoration: none !important;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, .25);
+}
+
+.btn-calendar:hover {
+	background-color: #5a6268;
+}
+
+#shifts {
+	display: flex;
+	flex-direction:row;
+	flex-wrap: nowrap;
+	height: 84%;
+	margin-top: 1em;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, .25);
+	/* overflow:inherit; */
+}
+
+.col {
+	border: 0;
+	height: 360px;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+}
+
+.time {
+	border: 1px solid;
+	height: 33.3%;
+	padding: 1em;
+}
+
+.shift {
+	border: 1px solid;
+	height: 33.3%;
+	padding: 1em;
+}
+
+.user {
+	background-color: #F7493B;
+}
+
+.release {
+	background-color: #4FC4CF;
+}
+
+button {
+	margin: 1em;
+	margin-top: 1.4em;
+	padding: .6em 1em .6em 1em;
+	/* background-color: transparent; */
+}
+
+.shift-text {
+	margin: .2em;
+}
+
+#col-left {
+	width: 30%;
+}
+
+#col-right {
+	width: 70%;
+}
 #wrapper {
 	padding-bottom: 40px;
 }
@@ -62,6 +149,8 @@ pre, code, code span {
 	padding-top: 40px;
 	border-top: 1px solid #efefef;
 	text-align: center;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr)
 }
 
 .article > h3 {
@@ -168,8 +257,8 @@ pre, code, code span {
 	max-width: 360px;
 	margin: 0 auto;
 	font-weight: 600;
-	margin-top: 2em;
-	padding: 1.6em;
+	/* margin-top: 2em; */
+	padding: 1.6em 1.6em 0 1.6em;
 	background-color: #fafafa;
 	border: 1px solid #d8d8d8;
 	box-shadow: 0 4px 12px rgba(0, 0, 0, .25);
@@ -209,13 +298,14 @@ pre, code, code span {
     text-align: right !important;
 }
 
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 880px) {
 	html, body {
 		font-size: 15px;
 	}
 
 	.article {
 		width: 90%;
+		/* grid-template-rows: 1fr 1fr; */
 	}
 }
 

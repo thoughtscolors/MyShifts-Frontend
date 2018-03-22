@@ -16,38 +16,7 @@
 	<link rel="stylesheet" type="text/css" href="./css1/calendar-style.css" />
 	<link rel="stylesheet" type="text/css" href="./css1/style.css" />
 	<link rel="stylesheet" type="text/css" href="./css2/pignose.calendar.min.css" />
-	<style type="text/css">
-		.input-calendar {
-			display: block;
-			width: 100%;
-			max-width: 360px;
-			margin: 0 auto;
-			height: 3.2em;
-			line-height: 3.2em;
-			font: inherit;
-			padding: 0 1.2em;
-			border: 1px solid #d8d8d8;
-			box-shadow: 0 4px 12px rgba(0, 0, 0, .25);
-		}
 
-		.btn-calendar {
-			display: block;
-			width: 100%;
-			max-width: 360px;
-			height: 3.2em;
-			line-height: 3.2em;
-			background-color: #52555a;
-			margin: 0 auto;
-			font-weight: 600;
-			color: #ffffff !important;
-			text-decoration: none !important;
-			box-shadow: 0 4px 12px rgba(0, 0, 0, .25);
-		}
-
-		.btn-calendar:hover {
-			background-color: #5a6268;
-		}
-	</style>
 </head>
 <body>
 	<div id="wrapper">
@@ -61,78 +30,36 @@
 		<h1 id="current-date"></h1>
 		<div id="basic" class="article">
 			<!-- <h3><span>Basic</span></h3> -->
-            <div class="calendar"></div>
-			<div class="box" style="display:block">
-				<table id="schedule">
-					<tr>
-						<th>
-							Time
-						</th>
-						<th>
-							Shifts
-						</th>
-					</tr>
-					<tr>
-						<td>
-							08:00-09:00
-						</td>
-					</tr>
-					<tr>
-						<td>
-							09:00-10:00
-						</td>
-					</tr>
-					<tr>
-						<td>
-							10:00-11:00
-						</td>
-					</tr>
-					<tr>
-						<td>
-							11:00-12:00
-						</td>
-					</tr>
-					<tr>
-						<td>
-							13:00-14:00
-						</td>
-					</tr>
-					<tr>
-						<td>
-							15:00-16:00
-						</td>
-					</tr>
-					<tr>
-						<td>
-							16:00-17:00
-						</td>
-					</tr>
-					<tr>
-						<td>
-							17:00-18:00
-						</td>
-					</tr>
-					<tr>
-						<td>
-							18:00-19:00
-						</td>
-					</tr>
-					<tr>
-						<td>
-							19:00-20:00
-						</td>
-					</tr>
-					<tr>
-						<td>
-							20:00-21:00
-						</td>
-					</tr>
-					<tr>
-						<td>
-							21:00-22:00
-						</td>
-					</tr>
-				</table>
+			<div class="calendar"></div>
+			<div class="box" style="display: block;">Today's Schedule
+				<div id="shifts">
+					<div class="col" id="col-left">
+					 <div class="time">
+						10:00
+					 </div>
+					 <div class="time">
+						14:00
+					 </div>
+					 <div class="time">
+						18:00
+					 </div>
+					</div>
+
+					<div class="col" id="col-right">
+						<div class="shift user">
+						 <span class="shift-text">Betty 10:00 - 14:00</span>
+						 <button type="button" name="button">Release Shift</button>
+						</div>
+						<div class="shift release">
+						 <span class="shift-text">Brady 14:00 - 18:00</span>
+						 <button type="button" name="button">Take Shift</button>
+						</div>
+						<div class="shift release">
+						 <span class="shift-text">Justin 18:00 - 22:00</span>
+						 <button type="button" name="button">Take Shift</button>
+						</div>
+					</div>
+
 			</div>
 			<!-- <ul class="ui top pointing secondary menu">
 				<a href="../#" role="presentation" class="item active" data-tab="html-basic">HTML</a>

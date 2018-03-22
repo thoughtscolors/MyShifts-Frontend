@@ -102,7 +102,7 @@
                 var $calendar = obj.calendar;
                 var $box = $calendar.parent().siblings('.box').show();
 								let box = document.querySelector('.box')
-								let table = document.querySelector('#schedule')
+								let shifts = document.querySelector('#shifts')
                 var text = `Today's Schedule:  `;
 
                 if(date[0] !== null) {
@@ -122,7 +122,7 @@ console.log('tttttt', text)
 
 
                 $box.text(text);
-								box.appendChild(table)
+								box.appendChild(shifts)
             }
 
             // Default Calendar

@@ -17,6 +17,9 @@ document.addEventListener('DOMContentLoaded', () => {
       let shift1000 = document.getElementById('10:00')
       let shift1400 = document.getElementById('14:00')
       let shift1800 = document.getElementById('18:00')
+      let userInShift1000 = false
+      let userInShift1400 = false
+      let userInShift1800 = false
 
       // empty the divs
       shift1000.innerHTML = ``
@@ -40,29 +43,47 @@ document.addEventListener('DOMContentLoaded', () => {
           shiftText.setAttribute('data-employeeId', employee.id)
 
           // add button with text type and name
-          releaseTakes.textContent = (employee.id === 1) ? 'Release Shift' : 'Take Shift'
+          releaseTakes.textContent = 'Take Shift'
           releaseTakes.setAttribute('type', 'button')
           releaseTakes.setAttribute('name', 'button')
 
           // add name, shift time, and employee id
-          if (request.start.slice(0, 5) === '10:00') {
+          if (request.start.slice(0, 5) === '10:00' && !userInShift1000) {
             shiftText.textContent += ' 10:00 - 14:00'
-            shift1000.style.backgroundColor = (employee.id === 1) ? '#fa4832' : '#4ec4cf'
+            shift1000.style.backgroundColor = '#4ec4cf'
             // add to div
-            shift1000.appendChild(shiftText)
-            shift1000.appendChild(releaseTakes)
-          } else if (request.start.slice(0, 5) === '14:00') {
+            if (!userInShift1000) {
+              shift1000.insertBefore(shiftText, shift1000.childNodes[0])
+              shift1000.insertBefore(releaseTakes, shift1000.childNodes[1])
+              userInShift1000 = true
+            } else {
+              shift1000.appendChild(shiftText)
+              shift1000.appendChild(releaseTakes)
+            }
+          } else if (request.start.slice(0, 5) === '14:00' && !userInShift1400) {
             shiftText.textContent += ' 14:00 - 18:00'
-            shift1400.style.backgroundColor = (employee.id === 1) ? '#fa4832' : '#4ec4cf'
+            shift1400.style.backgroundColor = '#4ec4cf'
             // add to div
-            shift1400.appendChild(shiftText)
-            shift1400.appendChild(releaseTakes)
-          } else if (request.start.slice(0, 5) === '18:00') {
+            if (!userInShift1400) {
+              shift1400.insertBefore(shiftText, shift1400.childNodes[0])
+              shift1400.insertBefore(releaseTakes, shift1400.childNodes[1])
+              userInShift1400 = true
+            } else {
+              shift1400.appendChild(shiftText)
+              shift1400.appendChild(releaseTakes)
+            }
+          } else if (request.start.slice(0, 5) === '18:00' && !userInShift1800) {
             shiftText.textContent += ' 18:00 - 22:00'
-            shift1800.style.backgroundColor = (employee.id === 1) ? '#fa4832' : '#4ec4cf'
+            shift1800.style.backgroundColor = '#4ec4cf'
             // add to div
-            shift1800.appendChild(shiftText)
-            shift1800.appendChild(releaseTakes)
+            if (!userInShift1800) {
+              shift1800.insertBefore(shiftText, shift1800.childNodes[0])
+              shift1800.insertBefore(releaseTakes, shift1800.childNodes[1])
+              userInShift1800 = true
+            } else {
+              shift1800.appendChild(shiftText)
+              shift1800.appendChild(releaseTakes)
+            }
           }
         })
       })
@@ -86,6 +107,9 @@ document.addEventListener('DOMContentLoaded', () => {
           let shift1000 = document.getElementById('10:00')
           let shift1400 = document.getElementById('14:00')
           let shift1800 = document.getElementById('18:00')
+          let userInShift1000 = false
+          let userInShift1400 = false
+          let userInShift1800 = false
 
           // empty the divs
           shift1000.innerHTML = ``
@@ -109,33 +133,51 @@ document.addEventListener('DOMContentLoaded', () => {
               shiftText.setAttribute('data-employeeId', employee.id)
 
               // add button with text type and name
-              releaseTakes.textContent = (employee.id === 1) ? 'Release Shift' : 'Take Shift'
+              releaseTakes.textContent = 'Take Shift'
               releaseTakes.setAttribute('type', 'button')
               releaseTakes.setAttribute('name', 'button')
 
               // add name, shift time, and employee id
-              if (request.start.slice(0, 5) === '10:00') {
+              if (request.start.slice(0, 5) === '10:00' && !userInShift1000) {
                 shiftText.textContent += ' 10:00 - 14:00'
-                shift1000.style.backgroundColor = (employee.id === 1) ? '#fa4832' : '#4ec4cf'
+                shift1000.style.backgroundColor = '#4ec4cf'
                 // add to div
-                shift1000.appendChild(shiftText)
-                shift1000.appendChild(releaseTakes)
-              } else if (request.start.slice(0, 5) === '14:00') {
+                if (!userInShift1000) {
+                  shift1000.insertBefore(shiftText, shift1000.childNodes[0])
+                  shift1000.insertBefore(releaseTakes, shift1000.childNodes[1])
+                  userInShift1000 = true
+                } else {
+                  shift1000.appendChild(shiftText)
+                  shift1000.appendChild(releaseTakes)
+                }
+              } else if (request.start.slice(0, 5) === '14:00' && !userInShift1400) {
                 shiftText.textContent += ' 14:00 - 18:00'
-                shift1400.style.backgroundColor = (employee.id === 1) ? '#fa4832' : '#4ec4cf'
+                shift1400.style.backgroundColor = '#4ec4cf'
                 // add to div
-                shift1400.appendChild(shiftText)
-                shift1400.appendChild(releaseTakes)
-              } else if (request.start.slice(0, 5) === '18:00') {
+                if (!userInShift1400) {
+                  shift1400.insertBefore(shiftText, shift1400.childNodes[0])
+                  shift1400.insertBefore(releaseTakes, shift1400.childNodes[1])
+                  userInShift1400 = true
+                } else {
+                  shift1400.appendChild(shiftText)
+                  shift1400.appendChild(releaseTakes)
+                }
+              } else if (request.start.slice(0, 5) === '18:00' && !userInShift1800) {
                 shiftText.textContent += ' 18:00 - 22:00'
-                shift1800.style.backgroundColor = (employee.id === 1) ? '#fa4832' : '#4ec4cf'
+                shift1800.style.backgroundColor = '#4ec4cf'
                 // add to div
-                shift1800.appendChild(shiftText)
-                shift1800.appendChild(releaseTakes)
+                if (!userInShift1800) {
+                  shift1800.insertBefore(shiftText, shift1800.childNodes[0])
+                  shift1800.insertBefore(releaseTakes, shift1800.childNodes[1])
+                  userInShift1800 = true
+                } else {
+                  shift1800.appendChild(shiftText)
+                  shift1800.appendChild(releaseTakes)
+                }
               }
             })
           })
-        }, 100)
+        }, 200)
       })
   })
 })

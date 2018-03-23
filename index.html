@@ -3,19 +3,20 @@
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, user-scalable=no" />
-	<meta property="og:url" content="http://www.pigno.se/barn/PIGNOSE-Calendar">
+	<!-- <meta property="og:url" content="http://www.pigno.se/barn/PIGNOSE-Calendar"> -->
 	<meta property="og:type" content="product" />
-	<meta property="og:title" content="PIGNOSE Calendar" />
-	<meta property="og:description" content="PIGNOSE Calendar is beautiful and eidetic jQuery date picker plguin." />
-	<meta property="og:image" content="http://www.pigno.se/barn/PIGNOSE-Calendar/demo/img/cover@250.png" />
-	<meta property="og:site_name" content="PIGNOSE" />
-	<title>PIGNOSE Calendar</title>
+	<meta property="og:title" content="MyShifts" />
+	<meta property="og:description" content="MyShifts - Get Your Shift Covered" />
+	<!-- <meta property="og:image" content="http://www.pigno.se/barn/PIGNOSE-Calendar/demo/img/cover@250.png" /> -->
+	<meta property="og:site_name" content="MyShifts" />
+	<title>MyShifts - Get Your Shift Covered</title>
 	<link rel="shortcut icon" type="image/x-icon" href="./style/img/pignose-ico.ico" />
 	<link rel="stylesheet" type="text/css" href="./style/css1/semantic.ui.min.css">
 	<link rel="stylesheet" type="text/css" href="./style/css1/prism.css" />
 	<link rel="stylesheet" type="text/css" href="./style/css1/calendar-style.css" />
 	<link rel="stylesheet" type="text/css" href="./style/css1/style.css" />
-	<link rel="stylesheet" type="text/css" href="./style/css2/pignose.calendar.min.css" />
+	<link rel="stylesheet" type="text/css" href="./style/css2/pignose.calendar.css" />
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
 </head>
 <body>
@@ -26,12 +27,13 @@
 			<a href="/https://github.com/KennethanCeyer/PIGNOSE-Calendar" target="_blank" class="ui button primary">View project on Github</a> <a href="/https://github.com/KennethanCeyer/PIGNOSE-Calendar/archive/master.zip" target="_blank" class="ui button teal">Download zip</a>
 			<h4 class="version">Latest version <strong></strong></h4>
 		</div> -->
-
+  <!-- </div> -->
 		<h1 id="current-date"></h1>
 		<div id="basic" class="article">
 			<!-- <h3><span>Basic</span></h3> -->
 			<div class="calendar"></div>
-			<div class="box" style="display: block;">Today's Schedule
+			<div class="box">
+				<p class="schedule-header">2018-03-22</p>
 				<div id="shifts">
 					<div class="col" id="col-left">
 					 <div class="time">
@@ -46,21 +48,23 @@
 					</div>
 
 					<div class="col" id="col-right">
-						<div class="shift user">
+						<div class="shift user" id="1" data-start="10:00">
 						 <span class="shift-text">Betty 10:00 - 14:00</span>
-						 <button type="button" name="button">Release Shift</button>
+						 <button type="button" name="button" id="test1">Release Shift</button>
 						</div>
-						<div class="shift release">
+						<div class="shift release" id="2" data-start="14:00">
 						 <span class="shift-text">Brady 14:00 - 18:00</span>
-						 <button type="button" name="button">Take Shift</button>
+						 <button type="button" name="button" id="test2">Take Shift</button>
 						</div>
-						<div class="shift release">
+						<div class="shift release" data-start="18:00">
 						 <span class="shift-text">Justin 18:00 - 22:00</span>
 						 <button type="button" name="button">Take Shift</button>
 						</div>
 					</div>
 
+
 			</div>
+			<button type="button" name="button" id="confirm">Confirm</button>
 			<!-- <ul class="ui top pointing secondary menu">
 				<a href="../#" role="presentation" class="item active" data-tab="html-basic">HTML</a>
 				<a href="../#" role="presentation" class="item" data-tab="javascript-basic">Javascript</a>
@@ -75,6 +79,7 @@
 			</div>
 		</div>
 	</div>
+</div>
     <script type="text/javascript" src="./style/js/jquery.latest.min.js"></script>
     <script type="text/javascript" src="./style/js/semantic.ui.min.js"></script>
     <script type="text/javascript" src="./style/js/prism.min.js"></script>
@@ -135,5 +140,6 @@ console.log('tttttt', text)
         });
         //]]>
     </script>
+		<script src="./src/index.js" charset="utf-8"></script>
 </body>
 </html>

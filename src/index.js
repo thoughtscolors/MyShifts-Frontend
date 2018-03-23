@@ -41,6 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
           shiftText.textContent = name
           shiftText.classList.add('shift-text')
           shiftText.setAttribute('data-employeeId', employee.id)
+          releaseTakes.setAttribute('data-employeeId', employee.id)
 
           // add button with text type and name
           releaseTakes.textContent = 'Take Shift'

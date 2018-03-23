@@ -48,17 +48,17 @@
 					</div>
 
 					<div class="col" id="col-right">
-						<div class="shift user" id="1" data-start="10:00">
+						<div id="10:00" class="shift user">
 						 <span class="shift-text">Betty 10:00 - 14:00</span>
 						 <button type="button" name="button" id="test1">Release Shift</button>
 						</div>
-						<div class="shift release" id="2" data-start="14:00">
+						<div id="14:00" class="shift release">
 						 <span class="shift-text">Brady 14:00 - 18:00</span>
 						 <button type="button" name="button" id="test2">Take Shift</button>
 						</div>
-						<div class="shift release" data-start="18:00">
+						<div id="18:00" class="shift release">
 						 <span class="shift-text">Justin 18:00 - 22:00</span>
-						 <button type="button" name="button">Take Shift</button>
+						 <button id="take-shift" type="button" name="button">Take Shift</button>
 						</div>
 					</div>
 
@@ -90,9 +90,11 @@
             $('#wrapper .version strong').text('v' + $.fn.pignoseCalendar.version);
 
 			let nowDate = new Date();
-			let date = `${nowDate.getFullYear()}-${(nowDate.getMonth()+1)}-${nowDate.getDate()}`
+			let day = `0${nowDate.getDate()}`.slice(-2)
+			let month = `0${nowDate.getMonth()+1}`.slice(-2)
+			let todayDate = `${nowDate.getFullYear()}-${month}-${day}`
 			let currentDate = document.querySelector('#current-date')
-			currentDate.innerHTML = `Today's ${date}`
+			currentDate.innerHTML = `Today's ${todayDate}`
 
             function onClickHandler(date, obj) {
                 /**
@@ -107,8 +109,8 @@
                 var $calendar = obj.calendar;
                 var $box = $calendar.parent().siblings('.box').show();
 								let box = document.querySelector('.box')
-								let table = document.querySelector('#schedule')
-                var text = `Today's Schedule:  `;
+								let shifts = document.querySelector('#shifts')
+                var text = ``;
 
                 if(date[0] !== null) {
                     text += date[0].format('YYYY-MM-DD');
@@ -125,9 +127,9 @@
                 }
 console.log('tttttt', text)
 
+				const scheduleHeader = document.querySelector('.schedule-header')
+				scheduleHeader.innerHTML = text
 
-                $box.text(text);
-								box.appendChild(table)
             }
 
             // Default Calendar

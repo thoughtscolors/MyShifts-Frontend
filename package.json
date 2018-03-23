@@ -1,0 +1,20 @@
+{
+  "name": "MyShifts-Frontend",
+  "version": "1.0.0",
+  "description": "The frontend of the user's shifts and their co-worker's shifts that want to be covered on a schedule with a calendar.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chausicle/MyShifts-Frontend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chausicle/MyShifts-Frontend/issues"
+  },
+  "homepage": "https://github.com/chausicle/MyShifts-Frontend#readme"
+}

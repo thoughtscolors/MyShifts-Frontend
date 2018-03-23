@@ -254,6 +254,7 @@ button {
 
 .box {
 	display: none;
+  min-width: 25em;
 	max-width: 360px;
 	margin: 0 auto;
 	font-weight: 600;

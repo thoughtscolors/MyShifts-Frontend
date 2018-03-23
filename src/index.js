@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let scheduleHeader = document.querySelector('.schedule-header')
   scheduleHeader.innerHTML = date
 
+  // JUSTIN
   // get all requests with nested employees on load
   axios.get(`${baseURL}/shifts`)
     .then(result => {
@@ -89,15 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
         })
       })
     })
-
-  axios.get(`${baseURL}/shifts/user-shifts`)
-    .then(result => {
-      console.log('result!!!!', result)
-
-      let currentDate  = document.querySelector('#current-date').innerHTML.slice(-10)
-      console.log('ccccccc', currentDate)
-    })
-
+  // JUSTIN
   // get all requests with nested employees when mousedown is on calendar
   document.addEventListener('mousedown', () => {
     axios.get(`${baseURL}/shifts`)
@@ -181,4 +174,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 200)
       })
   })
+  // JUSTIN
+
+  // BETTY
+  axios.get(`${baseURL}/shifts/user-shifts`)
+    .then(result => {
+      console.log('result!!!!', result)
+
+      let currentDate  = document.querySelector('#current-date').innerHTML.slice(-10)
+      console.log('ccccccc', currentDate)
+    })
+  // BETTY
 })

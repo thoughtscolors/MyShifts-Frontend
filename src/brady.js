@@ -1,18 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('DOMContentLoaded');
-  // --------------------------------------------------------
-  // we will add event listeners to the buttons from the db info here,
-  // can't do it to static buttons, just testing
-  let releaseButton = document.getElementById('test1')
-  releaseButton.addEventListener('click', stageRelease)
-
-  let takeButton = document.getElementById('test2')
-  takeButton.addEventListener('click', stageTakeShift)
-
-  let confirmButton = document.getElementById('confirm')
-  confirmButton.addEventListener('click', confirmRelease)
-  // ---------------------------------------------------------
+  console.log('DOMContentLoaded in brady.js');
+  addEventListeners()
 })
+
+const addEventListeners = () => {
+  let confirmButton = document.getElementById('confirm')
+  confirmButton.addEventListener('click', createRequestOnConfirm)
+
+  let testButton = document.getElementById('test')
+  testButton.addEventListener('click', addToUserShiftsWhenTaken)
+}
 
 const employee_id = 1;
 
@@ -46,7 +43,7 @@ const createRequestOnConfirm = () => {
 
   shifts.forEach(shift => {
     if (shift.classList.contains('staged')) {
-      const shift_id = shift.dataset.shiftId
+      const shift_id = shift.dataset.shiftid
       const start = shift.id
       console.log(shift_id, start);
 
@@ -59,12 +56,13 @@ const createRequestOnConfirm = () => {
       })
     }
   })
+  renderPage()
 }
 
 const deleteRequestWhenShiftTaken = (requestId) => {
   axios.delete(`${baseURL}/shifts/requests/${requestId}`)
   .then(res => {
-    console.log(res))
+    console.log(res)
   })
   .catch(err => {
     console.log(err);
@@ -73,6 +71,17 @@ const deleteRequestWhenShiftTaken = (requestId) => {
 
 const deleteUserShiftWhenTaken = (shift_id) => {
   axios.delete(`${baseURL}/shifts/user-shifts/${shift_id}`)
+  .then(res => {
+    console.log(res);
+  })
+  .catch(err => {
+    console.log(err);
+  })
+}
+
+const addToUserShiftsWhenTaken = (shift_id) => {
+  console.log(shift_id);
+  axios.post(`${baseURL}/shifts/user_shifts/${shift_id}`)
   .then(res => {
     console.log(res);
   })

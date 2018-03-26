@@ -21,7 +21,6 @@ const renderPage = () => {
 
     // filter the requests for the current date
     const ofDayRequest = result.data.result.filter(request => request.date.slice(0, 10) === date)
-    console.log('ofDayRequest === ', ofDayRequest);
 
     ofDayRequest.forEach(request => {
 
@@ -31,7 +30,6 @@ const renderPage = () => {
 
         axios.get(`${baseURL}/shifts/user-shifts`)
           .then(userShifts => {
-console.log('userShifts === ', userShifts);
             const allShifts  = userShifts.data.result
             allShifts.forEach(shift => {
               if(shift.date.slice(0, 10) === date && shift.request_id === 0  ) {
@@ -66,12 +64,8 @@ console.log('userShifts === ', userShifts);
       })
     })
   })
-
-
 }
 // JUSTIN
-
-// .find(thisDate => thisDate.dataset.date === scheduleHeader.innerHTML)
 const clickCalendar = () => {
   document.querySelectorAll('div.pignose-calendar-unit').forEach(date => {
     date.addEventListener('click', (event) => {
@@ -91,7 +85,6 @@ const clickCalendar = () => {
 
         // filter the requests for the current date
         const ofDayRequest = result.data.result.filter(request => request.date.slice(0, 10) === thisDate.textContent)
-        console.log('ofDayRequest === ', ofDayRequest);
 
         ofDayRequest.forEach(request => {
 
@@ -135,8 +128,6 @@ const clickCalendar = () => {
           })
         })
       })
-
-
     })
   })
 }

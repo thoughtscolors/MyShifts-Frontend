@@ -88,11 +88,11 @@ pre, code, code span {
 }
 
 .user {
-	background-color: #F7493B;
+	/* background-color: #F7493B; */
 }
 
 .release {
-	background-color: #4FC4CF;
+	/* background-color: #4FC4CF; */
 }
 
 .staged {

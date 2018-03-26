@@ -2,6 +2,7 @@ const baseURL = 'http://localhost:3000'
 
 document.addEventListener('DOMContentLoaded', () => {
   renderPage()
+  clickCalendar()
 })
 
 const renderPage = () => {
@@ -10,26 +11,27 @@ const renderPage = () => {
   let day = `0${nowDate.getDate()}`.slice(-2)
   let month = `0${nowDate.getMonth()+1}`.slice(-2)
   let date = `${nowDate.getFullYear()}-${month}-${day}`
-  
+
   let scheduleHeader = document.querySelector('.schedule-header')
   scheduleHeader.innerHTML = date
-  
+
   // get all requests with nested employees on load
   axios.get(`${baseURL}/shifts/requests`)
   .then(result => {
-  
+
     // filter the requests for the current date
     const ofDayRequest = result.data.result.filter(request => request.date.slice(0, 10) === date)
-  
+    console.log('ofDayRequest === ', ofDayRequest);
+
     ofDayRequest.forEach(request => {
-  
+
       request.employees.forEach(employee => {
-        
+
         let name = employee.first_name
-        
+
         axios.get(`${baseURL}/shifts/user-shifts`)
           .then(userShifts => {
-  
+console.log('userShifts === ', userShifts);
             const allShifts  = userShifts.data.result
             allShifts.forEach(shift => {
               if(shift.date.slice(0, 10) === date && shift.request_id === 0  ) {
@@ -38,20 +40,20 @@ const renderPage = () => {
                 let userShiftBox = document.getElementById(`${shift.start}`.slice(0, 5))
                 let shiftContent = userShiftBox.querySelector('.shift-text')
                 let release = document.createElement('button')
-  
+
                 shiftContent.innerHTML = `Your shift: ${startTime}-${endTime}:00`
                 userShiftBox.style.backgroundColor = 'red'
                 release.innerHTML = 'Release Shift'
-  
+
                 userShiftBox.appendChild(release)
-                
+
               } else {
                 let requestTime = request.start.slice(0, 5)
                 let requestEndTime = Number(requestTime.slice(0,2)) + 4
                 let requestBox = document.getElementById(`${requestTime}`)
                 let requestContent = requestBox.querySelector('.shift-text')
                 let take = document.createElement('button')
-  
+
                   requestContent.innerHTML = `${name}: ${requestTime}-${requestEndTime}:00`
                   requestBox.style.backgroundColor = 'blue'
                   take.innerHTML = 'Take Shift'
@@ -67,9 +69,81 @@ const renderPage = () => {
 
 
 }
+// JUSTIN
+
+// .find(thisDate => thisDate.dataset.date === scheduleHeader.innerHTML)
+const clickCalendar = () => {
+  document.querySelectorAll('div.pignose-calendar-unit').forEach(date => {
+    date.addEventListener('click', (event) => {
+      let thisDate = document.querySelector('.schedule-header')
+
+      // clears elements color, textContent, and button for new data to fill
+      document.querySelectorAll('.shift').forEach(shift => {
+        shift.style.backgroundColor = ''
+        shift.querySelector('.shift-text').textContent = ''
+        if (shift.querySelector('button'))
+          shift.removeChild(shift.querySelector('button'))
+      })
+
+      // get all requests with nested employees on load
+      axios.get(`${baseURL}/shifts/requests`)
+      .then(result => {
+
+        // filter the requests for the current date
+        const ofDayRequest = result.data.result.filter(request => request.date.slice(0, 10) === thisDate.textContent)
+        console.log('ofDayRequest === ', ofDayRequest);
+
+        ofDayRequest.forEach(request => {
+
+          request.employees.forEach(employee => {
+
+            let name = employee.first_name
+
+            axios.get(`${baseURL}/shifts/user-shifts`)
+              .then(userShifts => {
+                const allShifts  = userShifts.data.result
+                allShifts.forEach(shift => {
+                  if(shift.date.slice(0, 10) === thisDate.textContent && shift.request_id === 0  ) {
+                    let startTime = `${shift.start}`.slice(0, 5)
+                    let endTime = Number(startTime.slice(0,2)) + 4
+                    let userShiftBox = document.getElementById(`${shift.start}`.slice(0, 5))
+                    let shiftContent = userShiftBox.querySelector('.shift-text')
+                    let release = document.createElement('button')
+
+                    shiftContent.innerHTML = `Your shift: ${startTime}-${endTime}:00`
+                    userShiftBox.style.backgroundColor = '#fa4832'
+                    release.innerHTML = 'Release Shift'
+
+                    userShiftBox.appendChild(release)
+
+                  } else {
+                    let requestTime = request.start.slice(0, 5)
+                    let requestEndTime = Number(requestTime.slice(0,2)) + 4
+                    let requestBox = document.getElementById(`${requestTime}`)
+                    let requestContent = requestBox.querySelector('.shift-text')
+                    let take = document.createElement('button')
+
+                    requestContent.innerHTML = `${name}: ${requestTime}-${requestEndTime}:00`
+                    requestBox.style.backgroundColor = '#2fabb7'
+                    take.innerHTML = 'Take Shift'
+                    if(!requestBox.querySelector('button')) {
+                      requestBox.appendChild(take)
+                    }
+                  }
+                })
+              })
+          })
+        })
+      })
 
 
-  
+    })
+  })
+}
+
+// JUSTIN
+
+
 
   // JUSTIN
   // get all requests with nested employees when mousedown is on calendar
@@ -162,4 +236,3 @@ const renderPage = () => {
     // })
   // })
   // JUSTIN
-

@@ -75,8 +75,11 @@ const clickCalendar = () => {
       document.querySelectorAll('.shift').forEach(shift => {
         shift.style.backgroundColor = ''
         shift.querySelector('.shift-text').textContent = ''
-        if (shift.querySelector('button'))
-          shift.removeChild(shift.querySelector('button'))
+        if (shift.querySelectorAll('button')) {
+          shift.querySelectorAll('button').forEach(button => {
+            shift.removeChild(button)
+          })
+        }
       })
 
       // get all requests with nested employees on load

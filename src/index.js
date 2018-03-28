@@ -42,8 +42,12 @@ const renderPage = () => {
                 shiftContent.innerHTML = `Your shift: ${startTime}-${endTime}:00`
                 userShiftBox.style.backgroundColor = 'red'
                 release.innerHTML = 'Release Shift'
+                release.addEventListener('click', releaseShift)
   
-                userShiftBox.appendChild(release)
+                if(!userShiftBox.querySelector('button')) {
+                  userShiftBox.appendChild(release)
+                }
+                
                 
               } else {
                 let requestTime = request.start.slice(0, 5)
@@ -64,11 +68,24 @@ const renderPage = () => {
       })
     })
   })
-
-
 }
 
+const releaseShift = (event) => {
+  console.log('oooooooo')
+  console.log(event.target.parentNode.id)
+  let date = `${nowDate.getFullYear()}-${month}-${day}`
+  const start = event.target.parentNode.id
 
+  axios.post(`${baseURL}/shifts/requests`, {start, date, employee_id: 1, shift_id })
+    .then(result => {
+      const request_id = result.id
+      axios.patch(`${baseURL}/shifts/user-shifts/${shift_id}`, {request_id})
+
+    })
+
+  
+}
+  
   
 
   // JUSTIN

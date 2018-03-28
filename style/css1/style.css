@@ -53,6 +53,10 @@ pre, code, code span {
 	background-color: #5a6268;
 }
 
+#current-date {
+	text-align: center;
+}
+
 #shifts {
 	display: flex;
 	flex-direction:row;

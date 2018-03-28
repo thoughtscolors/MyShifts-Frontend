@@ -6,12 +6,13 @@ document.addEventListener('DOMContentLoaded', () => {
 const addEventListeners = () => {
   let confirmButton = document.getElementById('confirm')
   confirmButton.addEventListener('click', createRequestOnConfirm)
+  confirmButton.addEventListener('click', changeToPending)
 
   let testButton = document.getElementById('test')
   testButton.addEventListener('click', addToUserShiftsWhenTaken)
+  testButton.addEventListener('click', deleteUserShiftWhenTaken)
+  testButton.addEventListener('click', deleteRequestWhenTaken)
 }
-
-const employee_id = 1;
 
 const stageRelease = () => {
   console.log('clicked');
@@ -22,7 +23,15 @@ const stageRelease = () => {
     button.textContent = "Release Shift"
   }
   let userDiv = event.target.parentNode
-  userDiv.classList.toggle("staged")
+  if (userDiv.classList.contains('staged') ||
+     userDiv.classList.contains('pending')) {
+    userDiv.classList.remove('staged')
+  } else {
+    userDiv.classList.add('staged')
+  }
+  if (userDiv.classList.contains('pending')) {
+    userDiv.classList.remove('pending')
+  }
 }
 
 const stageTakeShift = () => {
@@ -34,7 +43,15 @@ const stageTakeShift = () => {
     button.textContent = "Take Shift"
   }
   let userDiv = event.target.parentNode
-  userDiv.classList.toggle("staged")
+  if (userDiv.classList.contains('staged') ||
+     userDiv.classList.contains('pending')) {
+    userDiv.classList.remove('staged')
+  } else {
+    userDiv.classList.add('staged')
+  }
+  if (userDiv.classList.contains('pending')) {
+    userDiv.classList.remove('pending')
+  }
 }
 
 const createRequestOnConfirm = () => {
@@ -43,6 +60,7 @@ const createRequestOnConfirm = () => {
 
   shifts.forEach(shift => {
     if (shift.classList.contains('staged')) {
+      const employee_id = shift.dataset.employeeId
       const shift_id = shift.dataset.shiftid
       const start = shift.id
       console.log(shift_id, start);
@@ -56,10 +74,22 @@ const createRequestOnConfirm = () => {
       })
     }
   })
-  renderPage()
+
 }
 
-const deleteRequestWhenShiftTaken = (requestId) => {
+const changeToPending = () => {
+  const shifts = document.querySelectorAll('.shift')
+
+  shifts.forEach(shift => {
+    if (shift.classList.contains('staged')) {
+      shift.classList.remove('staged')
+        shift.classList.add('pending')
+
+    }
+  })
+}
+
+const deleteRequestWhenTaken = (requestId) => {
   axios.delete(`${baseURL}/shifts/requests/${requestId}`)
   .then(res => {
     console.log(res)

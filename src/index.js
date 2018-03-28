@@ -43,9 +43,11 @@ console.log('rendering page');
                 let releaseButton = document.createElement('button')
                 releaseButton.addEventListener('click', stageRelease)
                 userShiftBox.setAttribute('data-shiftId', shift.id)
+                userShiftBox.setAttribute('data-employeeId', employee.id)
+                userShiftBox.classList.add('current')
 
                 shiftContent.innerHTML = `Your shift: ${startTime}-${endTime}:00`
-                userShiftBox.style.backgroundColor = '#F7493B'
+                // userShiftBox.style.backgroundColor = '#F7493B'
                 releaseButton.innerHTML = 'Release Shift'
 
                 userShiftBox.appendChild(releaseButton)
@@ -63,7 +65,10 @@ console.log('rendering page');
 
                 let takeButton = document.createElement('button')
                 takeButton.addEventListener('click', stageTakeShift)
-                requestBox.setAttribute('data-shiftId', request.shift_id)
+                requestBox.setAttribute('data-reqId', request.id)
+                requestBox.setAttribute('data-shiftId', shift.shift_id)
+                requestBox.setAttribute('data-employeeId', employee.id)
+                requestBox.classList.add('request')
 
                 if (requestBox.classList.contains('staged')) {
                   requestBox.classList.remove('staged')
@@ -71,7 +76,7 @@ console.log('rendering page');
 
 
                   requestContent.innerHTML = `${name}: ${requestTime}-${requestEndTime}:00`
-                  requestBox.style.backgroundColor = '#4FC4CF'
+                  // requestBox.style.backgroundColor = '#4FC4CF'
                   takeButton.innerHTML = 'Take Shift'
                 if(!requestBox.querySelector('button')) {
                   requestBox.appendChild(takeButton)

@@ -9,8 +9,8 @@ console.log('rendering page');
   let nowDate = new Date();
   let day = `0${nowDate.getDate()}`.slice(-2)
   let month = `0${nowDate.getMonth()+1}`.slice(-2)
-  // let date = `${nowDate.getFullYear()}-${month}-${day}`
-  let date = '2018-03-25'
+
+  let date = `${nowDate.getFullYear()}-${month}-${day}`
 
   let scheduleHeader = document.querySelector('.schedule-header')
   scheduleHeader.innerHTML = date
@@ -39,6 +39,7 @@ console.log('rendering page');
                 let endTime = Number(startTime.slice(0,2)) + 4
                 let userShiftBox = document.getElementById(`${shift.start}`.slice(0, 5))
                 let shiftContent = userShiftBox.querySelector('.shift-text')
+
                 let releaseButton = document.createElement('button')
                 releaseButton.addEventListener('click', stageRelease)
                 userShiftBox.setAttribute('data-shiftId', shift.id)
@@ -53,11 +54,13 @@ console.log('rendering page');
                   userShiftBox.classList.remove('staged')
                 }
 
+
               } else {
                 let requestTime = request.start.slice(0, 5)
                 let requestEndTime = Number(requestTime.slice(0,2)) + 4
                 let requestBox = document.getElementById(`${requestTime}`)
                 let requestContent = requestBox.querySelector('.shift-text')
+
                 let takeButton = document.createElement('button')
                 takeButton.addEventListener('click', stageTakeShift)
                 requestBox.setAttribute('data-shiftId', request.shift_id)
@@ -65,6 +68,7 @@ console.log('rendering page');
                 if (requestBox.classList.contains('staged')) {
                   requestBox.classList.remove('staged')
                 }
+
 
                   requestContent.innerHTML = `${name}: ${requestTime}-${requestEndTime}:00`
                   requestBox.style.backgroundColor = '#4FC4CF'
@@ -78,6 +82,4 @@ console.log('rendering page');
       })
     })
   })
-
-
 }

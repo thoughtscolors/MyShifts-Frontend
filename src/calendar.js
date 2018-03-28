@@ -81,6 +81,9 @@ $(function() {
               let shiftContent = userShiftBox.querySelector('.shift-text')
               let release = document.createElement('button')
               release.addEventListener('click', stageRelease)
+              userShiftBox.setAttribute('data-shiftId', shift.id)
+              userShiftBox.setAttribute('data-employeeId', employee.id)
+              userShiftBox.classList.add('current')
 
               shiftContent.innerHTML = `Your shift: ${startTime}-${endTime}:00`
               userShiftBox.style.backgroundColor = '#fa4832'
@@ -95,6 +98,10 @@ $(function() {
               let requestContent = requestBox.querySelector('.shift-text')
               let take = document.createElement('button')
               take.addEventListener('click', stageTakeShift)
+              requestBox.setAttribute('data-reqId', shift.id)
+              requestBox.setAttribute('data-shiftId', shift.shift_id)
+              requestBox.setAttribute('data-employeeId', employee.id)
+              requestBox.classList.add('request') 
 
               requestContent.innerHTML = `${name}: ${requestTime}-${requestEndTime}:00`
               requestBox.style.backgroundColor = '#2fabb7'

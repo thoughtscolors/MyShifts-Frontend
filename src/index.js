@@ -65,7 +65,7 @@ console.log('rendering page');
 
                 let takeButton = document.createElement('button')
                 takeButton.addEventListener('click', stageTakeShift)
-                requestBox.setAttribute('data-reqId', shift.id)
+                requestBox.setAttribute('data-reqId', request.id)
                 requestBox.setAttribute('data-shiftId', shift.shift_id)
                 requestBox.setAttribute('data-employeeId', employee.id)
                 requestBox.classList.add('request')

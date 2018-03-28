@@ -9,9 +9,9 @@ const addEventListeners = () => {
 
   let testButton = document.getElementById('test')
   testButton.addEventListener('click', addToUserShiftsWhenTaken)
+  testButton.addEventListener('click', deleteUserShiftWhenTaken)
+  testButton.addEventListener('click', deleteRequestWhenTaken)
 }
-
-const employee_id = 1;
 
 const stageRelease = () => {
   console.log('clicked');
@@ -59,7 +59,7 @@ const createRequestOnConfirm = () => {
   renderPage()
 }
 
-const deleteRequestWhenShiftTaken = (requestId) => {
+const deleteRequestWhenTaken = (requestId) => {
   axios.delete(`${baseURL}/shifts/requests/${requestId}`)
   .then(res => {
     console.log(res)

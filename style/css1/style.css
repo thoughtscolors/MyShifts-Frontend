@@ -87,16 +87,20 @@ pre, code, code span {
 	padding: 1em;
 }
 
-.user {
-	/* background-color: #F7493B; */
+.current {
+	background-color: #F7493B;
 }
 
-.release {
-	/* background-color: #4FC4CF; */
+.request {
+	background-color: #4FC4CF;
 }
 
 .staged {
 	opacity: .5;
+}
+
+.pending {
+	background-color: #ECECEC
 }
 
 button {

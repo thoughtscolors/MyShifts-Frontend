@@ -49,9 +49,7 @@ $(function() {
       shift.style.backgroundColor = ''
       shift.querySelector('.shift-text').textContent = ''
       if (shift.querySelectorAll('button')) {
-        console.log(shift.querySelectorAll('button'));
         shift.querySelectorAll('button').forEach(button => {
-          console.log('this button === ', button);
           shift.removeChild(button)
         })
       }

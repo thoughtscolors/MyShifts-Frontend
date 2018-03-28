@@ -47,7 +47,7 @@ console.log('rendering page');
                 userShiftBox.classList.add('current')
 
                 shiftContent.innerHTML = `Your shift: ${startTime}-${endTime}:00`
-                userShiftBox.style.backgroundColor = '#F7493B'
+                // userShiftBox.style.backgroundColor = '#F7493B'
                 releaseButton.innerHTML = 'Release Shift'
 
                 userShiftBox.appendChild(releaseButton)
@@ -76,7 +76,7 @@ console.log('rendering page');
 
 
                   requestContent.innerHTML = `${name}: ${requestTime}-${requestEndTime}:00`
-                  requestBox.style.backgroundColor = '#4FC4CF'
+                  // requestBox.style.backgroundColor = '#4FC4CF'
                   takeButton.innerHTML = 'Take Shift'
                 if(!requestBox.querySelector('button')) {
                   requestBox.appendChild(takeButton)

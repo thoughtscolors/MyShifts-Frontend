@@ -86,7 +86,7 @@ $(function() {
               userShiftBox.classList.add('current')
 
               shiftContent.innerHTML = `Your shift: ${startTime}-${endTime}:00`
-              userShiftBox.style.backgroundColor = '#fa4832'
+              // userShiftBox.style.backgroundColor = '#fa4832'
               release.innerHTML = 'Release Shift'
 
               userShiftBox.appendChild(release)
@@ -104,7 +104,7 @@ $(function() {
               requestBox.classList.add('request')
 
               requestContent.innerHTML = `${name}: ${requestTime}-${requestEndTime}:00`
-              requestBox.style.backgroundColor = '#2fabb7'
+              // requestBox.style.backgroundColor = '#2fabb7'
               take.innerHTML = 'Take Shift'
               if(!requestBox.querySelector('button')) {
                 requestBox.appendChild(take)

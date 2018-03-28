@@ -76,23 +76,35 @@ pre, code, code span {
 }
 
 .time {
-	border: 1px solid;
-	height: 33.3%;
+	border: 1px solid #d8d8d8;
+	height: 33.33%;
 	padding: 1em;
+}
+
+.calendar {
+	/* width: 50%; */
 }
 
 .shift {
-	border: 1px solid;
-	height: 33.3%;
+	border: 1px solid #d8d8d8;
+	height: 33.33%;
 	padding: 1em;
 }
 
-.user {
-	/* background-color: #F7493B; */
+.current {
+	background-color: #F7493B;
 }
 
-.release {
-	/* background-color: #4FC4CF; */
+.request {
+	background-color: #4FC4CF;
+}
+
+.staged {
+	opacity: .5;
+}
+
+.pending {
+	background-color: #ECECEC
 }
 
 button {
@@ -148,13 +160,14 @@ button {
 .article {
 	max-width: 1200px;
 	width: 80%;
+	height:100%;
 	margin: 0 auto;
 	margin-top: 40px;
 	padding-top: 40px;
 	border-top: 1px solid #efefef;
 	text-align: center;
-	display: grid;
-	grid-template-columns: repeat(2, 1fr)
+	display: flex;
+	flex-direction: row;
 }
 
 .article > h3 {
@@ -257,9 +270,11 @@ button {
 }
 
 .box {
-	display: none;
-  min-width: 25em;
+	display: block;
+	width: 40%;
 	max-width: 360px;
+	min-width: 360px;
+	height: 100%;
 	margin: 0 auto;
 	font-weight: 600;
 	/* margin-top: 2em; */
@@ -303,20 +318,26 @@ button {
     text-align: right !important;
 }
 
-@media screen and (max-width: 880px) {
+@media screen and (max-width: 1024px) {
 	html, body {
-		font-size: 15px;
+		/* font-size: 1.2em; */
 	}
 
 	.article {
 		width: 90%;
-		/* grid-template-rows: 1fr 1fr; */
+		flex-direction: column;
+	}
+
+	.box {
+		margin-top: 2em;
+		width: 100%;
+		/* font-size: .8em; */
 	}
 }
 
 @media screen and (max-width: 480px) {
 	html, body {
-		font-size: 14px;
+		/* font-size: 14px; */
 	}
 
 	.header h1 {
@@ -337,5 +358,18 @@ button {
 		width: 100%;
 		padding-left: 10px;
 		padding-right: 10px;
+	}
+
+	.box {
+		min-width: 340px;
+		/* margin-left: 0; */
+	}
+}
+
+@media screen and (max-width: 330px) {
+  .box {
+		min-width: 300px;
+		font-size: .9em;
+		margin-left: 0
 	}
 }

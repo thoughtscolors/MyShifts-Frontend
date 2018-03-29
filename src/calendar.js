@@ -82,7 +82,6 @@ $(function() {
 
               let releaseButton = document.createElement('button')
               releaseButton.addEventListener('click', toggleStage)
-              console.log('after release button click?????');
               userShiftBox.setAttribute('data-shiftid', shift.shift_id)
               userShiftBox.setAttribute('data-employeeid', 1)
               userShiftBox.setAttribute('data-reqid', 0)

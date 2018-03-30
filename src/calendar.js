@@ -46,12 +46,12 @@ $(function() {
     // JUSTIN
     // clears elements color, textContent, and button for new data to fill
     document.querySelectorAll('.shift').forEach(shift => {
+      shift.classList = ''
+      shift.classList.add('shift')
       shift.style.backgroundColor = ''
       shift.querySelector('.shift-text').textContent = ''
       if (shift.querySelectorAll('button')) {
-        console.log(shift.querySelectorAll('button'));
         shift.querySelectorAll('button').forEach(button => {
-          console.log('this button === ', button);
           shift.removeChild(button)
         })
       }
@@ -79,35 +79,45 @@ $(function() {
               let endTime = Number(startTime.slice(0,2)) + 4
               let userShiftBox = document.getElementById(`${shift.start}`.slice(0, 5))
               let shiftContent = userShiftBox.querySelector('.shift-text')
-              let release = document.createElement('button')
-              release.addEventListener('click', stageRelease)
-              userShiftBox.setAttribute('data-shiftId', shift.id)
-              userShiftBox.setAttribute('data-employeeId', employee.id)
+
+              let releaseButton = document.createElement('button')
+              releaseButton.addEventListener('click', toggleStage)
+              userShiftBox.setAttribute('data-shiftid', shift.shift_id)
+              userShiftBox.setAttribute('data-employeeid', 1)
+              userShiftBox.setAttribute('data-reqid', 0)
               userShiftBox.classList.add('current')
-
               shiftContent.innerHTML = `Your shift: ${startTime}-${endTime}:00`
-              // userShiftBox.style.backgroundColor = '#fa4832'
-              release.innerHTML = 'Release Shift'
+              releaseButton.innerHTML = 'Release Shift'
 
-              userShiftBox.appendChild(release)
+              if(!userShiftBox.querySelector('button')) {
+                userShiftBox.appendChild(releaseButton)
+              }
+
+              if (userShiftBox.classList.contains('staged-release')) {
+                userShiftBox.classList.remove('staged-release')
+              }
 
             } else {
               let requestTime = request.start.slice(0, 5)
               let requestEndTime = Number(requestTime.slice(0,2)) + 4
               let requestBox = document.getElementById(`${requestTime}`)
               let requestContent = requestBox.querySelector('.shift-text')
-              let take = document.createElement('button')
-              take.addEventListener('click', stageTakeShift)
-              requestBox.setAttribute('data-reqId', request.id)
-              requestBox.setAttribute('data-shiftId', shift.shift_id)
-              requestBox.setAttribute('data-employeeId', employee.id)
-              requestBox.classList.add('request')
+              let takeButton = document.createElement('button')
 
+              takeButton.addEventListener('click', toggleStage)
+              requestBox.setAttribute('data-reqid', request.id)
+              requestBox.setAttribute('data-shiftid', request.shift_id)
+              requestBox.setAttribute('data-employeeid', employee.id)
+              requestBox.classList.add('request')
               requestContent.innerHTML = `${name}: ${requestTime}-${requestEndTime}:00`
-              // requestBox.style.backgroundColor = '#2fabb7'
-              take.innerHTML = 'Take Shift'
+              takeButton.innerHTML = 'Take Shift'
+
               if(!requestBox.querySelector('button')) {
-                requestBox.appendChild(take)
+                requestBox.appendChild(takeButton)
+              }
+
+              if (requestBox.classList.contains('staged-take-shift')) {
+                requestBox.classList.remove('staged-take-shift')
               }
             }
           })

@@ -1,87 +1,47 @@
-<!DOCTYPE HTML>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, user-scalable=no" />
-	<!-- <meta property="og:url" content="http://www.pigno.se/barn/PIGNOSE-Calendar"> -->
-	<meta property="og:type" content="product" />
-	<meta property="og:title" content="MyShifts" />
-	<meta property="og:description" content="MyShifts - Get Your Shift Covered" />
-	<!-- <meta property="og:image" content="http://www.pigno.se/barn/PIGNOSE-Calendar/demo/img/cover@250.png" /> -->
-	<meta property="og:site_name" content="MyShifts" />
-	<title>MyShifts - Get Your Shift Covered</title>
-	<link rel="shortcut icon" type="image/x-icon" href="./style/img/pignose-ico.ico" />
-	<link rel="stylesheet" type="text/css" href="./style/css1/semantic.ui.min.css">
-	<link rel="stylesheet" type="text/css" href="./style/css1/prism.css" />
-	<link rel="stylesheet" type="text/css" href="./style/css1/calendar-style.css" />
-	<link rel="stylesheet" type="text/css" href="./style/css1/style.css" />
-	<link rel="stylesheet" type="text/css" href="./style/css2/pignose.calendar.css" />
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<!--=======Font Open Sans======-->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+	<!--StyleSheet-->
+	<link rel="stylesheet" href="./style/css1/style2.css">
 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-
 </head>
-<body>
-	<div id="wrapper">
-		<!-- <div class="header">
-			<img src="../demo/img/pignose-logo.png" alt="" />
-			<h1>PIGNOSE Calendar Examples</h1>
-			<a href="/https://github.com/KennethanCeyer/PIGNOSE-Calendar" target="_blank" class="ui button primary">View project on Github</a> <a href="/https://github.com/KennethanCeyer/PIGNOSE-Calendar/archive/master.zip" target="_blank" class="ui button teal">Download zip</a>
-			<h4 class="version">Latest version <strong></strong></h4>
-		</div> -->
-  <!-- </div> -->
-		<h1 id="current-date"></h1>
-		<div id="basic" class="article">
-			<!-- <h3><span>Basic</span></h3> -->
-			<div class="calendar"></div>
-			<div class="box">
-				<p class="schedule-header">2018-03-22</p>
-				<div id="shifts">
-					<div class="col" id="col-left">
-					 <div class="time">
-						10:00
-					 </div>
-					 <div class="time">
-						14:00
-					 </div>
-					 <div class="time">
-						18:00
-					 </div>
-					</div>
-
-					<div class="col" id="col-right">
-						<div id="10:00" class="shift">
-						 <p class="shift-text"></p>
-						</div>
-						<div id="14:00" class="shift">
-						 <p class="shift-text"></p>
-						</div>
-						<div id="18:00" class="shift">
-						 <p class="shift-text"></p>
-						</div>
-					</div>
-			</div>
-			<button type="button" name="button" id="confirm">Confirm</button>
-			
-			<!-- <ul class="ui top pointing secondary menu">
-				<a href="../#" role="presentation" class="item active" data-tab="html-basic">HTML</a>
-				<a href="../#" role="presentation" class="item" data-tab="javascript-basic">Javascript</a>
-			</ul> -->
-			<!-- <div role="tabpanel" class="ui tab segment active" data-tab="html-basic">
-				<pre><code class="language-markup">&lt;div class=&quot;calendar&quot;&gt;&lt;/div&gt;</code></pre>
-			</div> -->
-			<div role="tabpanel" class="ui tab segment" data-tab="javascript-basic">
-					<pre><code class="language-js">$(function() {
-    $('.calendar').pignoseCalendar();
-});</code></pre>
-			</div>
-		</div>
-	</div>
+<body> 
+	<h1 id="app-header" >Welcome to MyShifts</h1>
+<div class="forms">
+	<ul class="tab-group">
+		<li class="tab active"><a href="#login">Log In</a></li>
+		<li class="tab"><a href="#signup">Sign Up</a></li>
+	</ul>
+	<form action="#" id="login">
+	      <div class="input-field">
+	        <label for="email-login">Email</label>
+	        <input id="email-login" type="email" name="email" required="email" />
+	        <label for="password-login">Password</label> 
+	        <input id="password-login" type="password" name="password" required/>
+	        <input type="submit" value="Login" class="button"/>
+	        <p class="text-p"> <a href="#">Forgot password?</a> </p>
+	      </div>
+	  </form>
+	  <form action="#" id="signup">
+	      <div class="input-field">
+					<label for="first-name">First Name</label> 
+					<input id="first-name" type="name" name="first-name" required/>
+					<label for="last-name">Last Name</label> 
+					<input id="last-name" type="name" name="last-name" required/>
+	        <label for="email-signup">Email</label> 
+	        <input id="email-signup" type="email" name="email" required="email"/>
+	        <label for="password-signup">Password</label> 
+	        <input id="password-signup" type="password" name="password" required/>
+	        
+	        <input type="submit" value="Sign up" class="button" id="sign-up" />
+	      </div>
+	  </form>
 </div>
-<script type="text/javascript" src="./style/js/jquery.latest.min.js"></script>
-<script type="text/javascript" src="./style/js/semantic.ui.min.js"></script>
-<script type="text/javascript" src="./style/js/prism.min.js"></script>
-<script type="text/javascript" src="./style/js/pignose.calendar.full.min.js"></script>
-<script type="text/javascript" src="./src/calendar.js"></script>
-<script src="./src/index.js" charset="utf-8"></script>
-<script src="./src/brady.js" charset="utf-8"></script>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script type="text/javascript" src="./src/signup.js"></script>
 </body>
 </html>

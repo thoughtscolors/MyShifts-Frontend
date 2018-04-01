@@ -119,7 +119,7 @@ const createRequest = (employee_id, shift_id, start, date) => {
 const deleteRequestWhenTaken = (requestId) => {
   axios.delete(`${baseURL}/shifts/requests/${requestId}`)
   .then(res => {
-    console.log(res)
+    console.log(resssssssss )
   })
   .catch(err => {
     console.log(err);

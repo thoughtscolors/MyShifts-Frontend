@@ -28,9 +28,9 @@ const toggleStage = (event) => {
 
     if (shiftBox.classList.contains('staged-release')) {
       shiftBox.classList.remove('staged-release')
-       } else {
-       shiftBox.classList.add('staged-release')
-      }
+    } else {
+      shiftBox.classList.add('staged-release')
+    }
   }
 
   if(shiftBox.classList.contains('request')) {

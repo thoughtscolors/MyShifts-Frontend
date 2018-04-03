@@ -1,15 +1,14 @@
 const baseURL = 'http://localhost:3000'
 
-document.addEventListener('DOMContentLoaded', () => {
-  renderPage()
-})
+document.addEventListener('DOMContentLoaded', renderPage(email))
 
 let nowDate = new Date();
 let day = `0${nowDate.getDate()}`.slice(-2)
 let month = `0${nowDate.getMonth()+1}`.slice(-2)
 let date = `${nowDate.getFullYear()}-${month}-${day}`
 
-const renderPage = () => {
+const renderPage = (email) => {
+  console.log('this email === ', email);
 console.log('rendering page');
   let nowDate = new Date();
   let day = `0${nowDate.getDate()}`.slice(-2)
@@ -57,7 +56,7 @@ console.log('rrrrrrresult', result)
                 if(!userShiftBox.querySelector('button')) {
                   userShiftBox.appendChild(releaseButton)
                 }
-                
+
                 if (userShiftBox.classList.contains('staged-release')) {
                   userShiftBox.classList.remove('staged-release')
                 }
@@ -83,7 +82,7 @@ console.log('rrrrrrresult', result)
 
                 if (requestBox.classList.contains('staged-take-shift')) {
                   requestBox.classList.remove('staged-take-shift')
-                } 
+                }
               }
             })
           })
@@ -105,7 +104,7 @@ const releaseShift = (shift_id, request_id) => {
 }
 
 
-  
+
 let columnRight = document.querySelector('#col-right').children
 
 console.log('righttttt', columnRight)
@@ -113,11 +112,11 @@ console.log('righttttt', columnRight)
 
 
 const confirm = () => {
-  
+
   const allShiftBoxes = document.querySelector('#col-right').children
 
   for(let i = 0; i < allShiftBoxes.length; i++) {
-    
+
     let start = allShiftBoxes[i].id
       let employee_id = allShiftBoxes[i].dataset.employeeid
       let shift_id = allShiftBoxes[i].dataset.shiftid
@@ -152,7 +151,7 @@ const confirm = () => {
 
       deleteRequestWhenTaken(request_id)
       addToUserShiftsWhenTaken(shift_id, start, date, new_request_id)
-      
+
 
       allShiftBoxes[i].classList.remove('staged-take-shift')
       allShiftBoxes[i].classList.remove('request')
@@ -171,7 +170,7 @@ const confirm = () => {
 
 const confirmButton = document.querySelector('#confirm')
 confirmButton.onclick = confirm
-  
+
 
   // JUSTIN
   // get all requests with nested employees when mousedown is on calendar
@@ -264,4 +263,3 @@ confirmButton.onclick = confirm
     // })
   // })
   // JUSTIN
-

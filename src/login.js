@@ -19,7 +19,7 @@ document.querySelector("#log-in").addEventListener("click", (event) => {
     // renderPage(loginEmail);
   })
   .catch(error => {
-    console.log('error in login.js = ', error);
+    console.log('error in login.js = ', error.response);
     alert.style.display = "block";
   })
 })

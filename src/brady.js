@@ -1,8 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
   console.log('DOMContentLoaded in brady.js');
-  // addEventListeners()
+  addEventListeners()
 })
 
+const addEventListeners = () => {
+  document.getElementById('logout').addEventListener('click', logOut)
+}
 // const addEventListeners = () => {
 //   let confirmButton = document.getElementById('confirm')
 //   confirmButton.addEventListener('click', createRequestOnConfirm)
@@ -145,4 +148,9 @@ const addToUserShiftsWhenTaken = (shift_id, start, date, request_id) => {
   .catch(err => {
     console.log(err);
   })
+}
+
+const logOut = () => {
+  localStorage.clear()
+  location.assign('index.html')
 }

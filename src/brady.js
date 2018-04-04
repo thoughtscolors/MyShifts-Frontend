@@ -1,10 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
   console.log('DOMContentLoaded in brady.js');
-
+  addEventListeners()
 })
 
-
-
+const addEventListeners = () => {
+  document.getElementById('logout').addEventListener('click', logOut)
+}
 
 const toggleStage = (event) => {
   const button = event.target

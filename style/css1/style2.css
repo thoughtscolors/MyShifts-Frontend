@@ -14,7 +14,7 @@ body {
 	padding-top: 200px;
 	text-align: center;
 	color: #ffffff;
-	
+
 }
 
 .forms {
@@ -115,3 +115,33 @@ body {
 .forms .button:hover, .button:focus { background: #56ae26; }
 .text-p { text-align: right; }
 .text-p a { color: #1383ea; }
+
+.alert {
+    color: white;
+    background-color: #fc877c;
+    border-color: #fa7366;
+    display: none;
+}
+
+.alert-danger {
+    background-color: #E74C3C;
+}
+.alert {
+    border: none;
+    color: #fff;
+}
+.text-center {
+    text-align: center !important;
+}
+.alert-danger {
+    color: #78281f;
+    background-color: #fadbd8;
+    border-color: #f8cdc8;
+}
+.alert {
+    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+}

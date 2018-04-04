@@ -62,70 +62,70 @@ $(function() {
 
     // get all requests with nested employees on load
     axios.all([
-      axios.get(`${baseURL}/requests`),  // /requests
-      axios.get(`${baseURL}/shifts`, { headers: { authorization: token } }) // /shifts
+      axios.get(`${baseURL}/shifts`, { headers: { authorization: token } }), // /shifts
+      axios.get(`${baseURL}/requests`)  // /requests
     ])
-    .then(axios.spread((getRequests, getUserShifts) => {
+    .then(axios.spread((getUserShifts, getRequests) => {
+      // filter the requests for the current date
+      const ofDayShift = getUserShifts.data.filter(shift => shift.date.slice(0, 10) === scheduleHeader.textContent)
+
+      ofDayShift.forEach(shift => {
+        let startTime = `${shift.start}`.slice(0, 5)
+        let endTime = Number(startTime.slice(0,2)) + 4
+        let userShiftBox = document.getElementById(startTime)
+        let shiftContent = userShiftBox.querySelector('.shift-text')
+        let releaseButton = document.createElement('button')
+        releaseButton.addEventListener('click', toggleStage)
+        userShiftBox.setAttribute('data-shiftid', shift.shift_id)
+        userShiftBox.setAttribute('data-employeeid', shift.employee_id)
+        userShiftBox.classList.add('current')
+        shiftContent.innerHTML = `Your shift: ${startTime}-${endTime}:00`
+        releaseButton.innerHTML = 'Release Shift'
+
+        if(!userShiftBox.querySelector('button')) {
+          userShiftBox.appendChild(releaseButton)
+        }
+
+        if (userShiftBox.classList.contains('staged-release')) {
+          userShiftBox.classList.remove('staged-release')
+        }
+      })
+
       // filter the requests for the current date
       const ofDayRequest = getRequests.data.result.filter(request => request.date.slice(0, 10) === scheduleHeader.textContent)
 
       ofDayRequest.forEach(request => {
+        let requestTime = request.start.slice(0, 5)
+        let requestEndTime = Number(requestTime.slice(0,2)) + 4
+        let requestBox = document.getElementById(`${requestTime}`)
+        let requestContent = requestBox.querySelector('.shift-text')
+        let takeButton = document.createElement('button')
+        let name = request.employees[0].first_name
 
-        request.employees.forEach(employee => {
-          console.log('WHICH EMPLOYEE IS THIS DUDE === ', employee);
-          let name = employee.first_name
+        const employeeidInShiftBox = requestBox.dataset.employeeid
 
-          const allShifts  = getUserShifts.data
-          allShifts.forEach(shift => {
-            if(shift.date.slice(0, 10) === scheduleHeader.textContent && shift.request_id === 0  && (!document.getElementById(`${shift.start}`.slice(0, 5)).querySelector('.shift-text').textContent)) {
+        if(employeeidInShiftBox !== request.employee_id ) {
+          takeButton.addEventListener('click', toggleStage)
+          requestBox.setAttribute('data-reqid', request.id)
+          requestBox.setAttribute('data-shiftid', request.shift_id)
+          requestBox.setAttribute('data-employeeid', request.employee_id)
+          requestBox.classList.add('request')
+          if(requestBox.classList.contains('current')) {
+            requestBox.classList.remove('current')
+          }
+          requestContent.innerHTML = `${name}: ${requestTime}-${requestEndTime}:00`
+          takeButton.innerHTML = 'Take Shift'
 
-              let startTime = `${shift.start}`.slice(0, 5)
-              let endTime = Number(startTime.slice(0,2)) + 4
-              let userShiftBox = document.getElementById(`${shift.start}`.slice(0, 5))
-              let shiftContent = userShiftBox.querySelector('.shift-text')
+          if(!requestBox.querySelector('button')) {
+            requestBox.appendChild(takeButton)
+          } else {
+            requestBox.querySelector('button').innerHTML = 'Take Shift'
+          }
 
-              let releaseButton = document.createElement('button')
-              releaseButton.addEventListener('click', toggleStage)
-              userShiftBox.setAttribute('data-shiftid', shift.shift_id)
-              userShiftBox.setAttribute('data-employeeid', 1)
-              userShiftBox.setAttribute('data-reqid', 0)
-              userShiftBox.classList.add('current')
-              shiftContent.innerHTML = `Your shift: ${startTime}-${endTime}:00`
-              releaseButton.innerHTML = 'Release Shift'
-
-              if(!userShiftBox.querySelector('button')) {
-                userShiftBox.appendChild(releaseButton)
-              }
-
-              if (userShiftBox.classList.contains('staged-release')) {
-                userShiftBox.classList.remove('staged-release')
-              }
-
-            } else {
-              let requestTime = request.start.slice(0, 5)
-              let requestEndTime = Number(requestTime.slice(0,2)) + 4
-              let requestBox = document.getElementById(`${requestTime}`)
-              let requestContent = requestBox.querySelector('.shift-text')
-              let takeButton = document.createElement('button')
-
-              takeButton.addEventListener('click', toggleStage)
-              requestBox.setAttribute('data-reqid', request.id)
-              requestBox.setAttribute('data-shiftid', request.shift_id)
-              requestBox.setAttribute('data-employeeid', employee.id)
-              requestBox.classList.add('request')
-              requestContent.innerHTML = `${name}: ${requestTime}-${requestEndTime}:00`
-              takeButton.innerHTML = 'Take Shift'
-
-              if(!requestBox.querySelector('button')) {
-                requestBox.appendChild(takeButton)
-              }
-
-              if (requestBox.classList.contains('staged-take-shift')) {
-                requestBox.classList.remove('staged-take-shift')
-              }
-            }
-          })
-        })
+          if (requestBox.classList.contains('staged-take-shift')) {
+            requestBox.classList.remove('staged-take-shift')
+          }
+        }
       })
     }))
     // JUSTIN

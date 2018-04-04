@@ -114,6 +114,19 @@ button {
 	/* background-color: transparent; */
 }
 
+#logout {
+  float: right;
+  /* width: 10%; */
+  /* height: .7em; */
+  display: inline-block;
+  position: absolute;
+  right: 0;
+	font-size: .7em;
+	/* font-weight: bolder; */
+	/* bottom: 0; */
+	/* opacity: .5; */
+}
+
 .shift-text {
 	margin: .2em;
 }

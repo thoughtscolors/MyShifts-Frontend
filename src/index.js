@@ -30,8 +30,10 @@ console.log('rrrrrrresult', result)
 
         const name = request.employees[0].first_name
 
+        let token = JSON.parse(localStorage.getItem('authorization'))
+        console.log(token, 'renderpage');
 
-        axios.get(`${baseURL}/shifts`, { headers: { authorization: token }})
+        axios.get(`${baseURL}/shifts`, { headers: { authorization: token } })
           .then(userShifts => {
 console.log('userShiftsssssss', userShifts)
             const allShifts  = userShifts.data

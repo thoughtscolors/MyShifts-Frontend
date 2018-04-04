@@ -16,5 +16,6 @@
   "bugs": {
     "url": "https://github.com/chausicle/MyShifts-Frontend/issues"
   },
-  "homepage": "https://github.com/chausicle/MyShifts-Frontend#readme"
+  "homepage": "https://github.com/chausicle/MyShifts-Frontend#readme",
+  "dependencies": {}
 }

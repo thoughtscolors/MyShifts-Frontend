@@ -57,10 +57,13 @@ $(function() {
       }
     })
 
+    let token = JSON.parse(localStorage.getItem('authorization'))
+    console.log(token, 'renderpage');
+
     // get all requests with nested employees on load
     axios.all([
-      axios.get(`${baseURL}/shifts/requests`),  // /requests
-      axios.get(`${baseURL}/shifts/user-shifts`) // /shifts
+      axios.get(`${baseURL}/requests`),  // /requests
+      axios.get(`${baseURL}/shifts`, { headers: { authorization: token } }) // /shifts
     ])
     .then(axios.spread((getRequests, getUserShifts) => {
       // filter the requests for the current date
@@ -69,9 +72,10 @@ $(function() {
       ofDayRequest.forEach(request => {
 
         request.employees.forEach(employee => {
+          console.log('WHICH EMPLOYEE IS THIS DUDE === ', employee);
           let name = employee.first_name
 
-          const allShifts  = getUserShifts.data.result
+          const allShifts  = getUserShifts.data
           allShifts.forEach(shift => {
             if(shift.date.slice(0, 10) === scheduleHeader.textContent && shift.request_id === 0  && (!document.getElementById(`${shift.start}`.slice(0, 5)).querySelector('.shift-text').textContent)) {
 

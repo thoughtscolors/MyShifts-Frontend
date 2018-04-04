@@ -33,8 +33,8 @@ console.log('rrrrrrresult', result)
 
         axios.get(`${baseURL}/shifts`, { headers: { authorization: token }})
           .then(userShifts => {
-
-            const allShifts  = userShifts.data.result
+console.log('userShiftsssssss', userShifts)
+            const allShifts  = userShifts.data
 
             allShifts.forEach(shift => {
               if(shift.date.slice(0, 10) === date && shift.request_id === 0  ) {

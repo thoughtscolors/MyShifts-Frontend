@@ -92,14 +92,18 @@ pre, code, code span {
 }
 
 .current {
-	background-color: #F7493B;
-}
-
-.request {
 	background-color: #4FC4CF;
 }
 
-.staged {
+.request {
+	background-color: #F7493B;
+}
+
+.staged-release {
+	opacity: .5;
+}
+
+.staged-take-shift {
 	opacity: .5;
 }
 
@@ -116,12 +120,16 @@ button {
 
 #logout {
   float: right;
+	border: 0;
+	background-color: transparent;
   /* width: 10%; */
   /* height: .7em; */
   display: inline-block;
   position: absolute;
   right: 0;
-	font-size: .7em;
+	/* top: 2em; */
+	font-size: .8em;
+	/* text-decoration: underline; */
 	/* font-weight: bolder; */
 	/* bottom: 0; */
 	/* opacity: .5; */
@@ -348,7 +356,7 @@ button {
 	}
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 599px) {
 	html, body {
 		/* font-size: 14px; */
 	}
@@ -373,16 +381,30 @@ button {
 		padding-right: 10px;
 	}
 
+	#logout {
+		top: 2em;
+	}
+
 	.box {
 		min-width: 340px;
 		/* margin-left: 0; */
 	}
 }
 
-@media screen and (max-width: 330px) {
+@media screen and (max-width: 440px) {
+	#logout {
+		top: 6em;
+	}
+}
+
+@media screen and (max-width: 340px) {
   .box {
 		min-width: 300px;
 		font-size: .9em;
 		margin-left: 0
+	}
+
+	#logout {
+		top: 6em;
 	}
 }

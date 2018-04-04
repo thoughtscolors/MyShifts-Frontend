@@ -21,6 +21,7 @@ signupButton.onclick = signup
 })
 
 const signup = (event) => {
+  event.preventDefault()
   console.log(event.target.parentNode)
   const signupForm = event.target.parentNode
 
@@ -32,7 +33,7 @@ const signup = (event) => {
   axios.post(`${baseURL}/signup`, {first_name, last_name, email, password})
     .then(result => {
 console.log('xxxxxxx', result)
-      signupForm.appendChild('You have successfully created an account')
+      
     })
     .catch(err => {
       console.log(err)

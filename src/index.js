@@ -1,28 +1,24 @@
 const baseURL = 'http://localhost:3000'
-
-document.addEventListener('DOMContentLoaded', () => {
-  renderPage()
-})
-
 let nowDate = new Date();
 let day = `0${nowDate.getDate()}`.slice(-2)
 let month = `0${nowDate.getMonth()+1}`.slice(-2)
 let date = `${nowDate.getFullYear()}-${month}-${day}`
 
+document.addEventListener('DOMContentLoaded', () => {
+  renderPage()
+})
+
+
+
 const renderPage = () => {
   // console.log('this email === ', email);
 console.log('rendering page');
-  let nowDate = new Date();
-  let day = `0${nowDate.getDate()}`.slice(-2)
-  let month = `0${nowDate.getMonth()+1}`.slice(-2)
-
-  let date = `${nowDate.getFullYear()}-${month}-${day}`
-
-  let scheduleHeader = document.querySelector('.schedule-header')
-  scheduleHeader.innerHTML = date
+const token = JSON.parse(localStorage.getItem('authorization'))
+const scheduleHeader = document.querySelector('.schedule-header')
+scheduleHeader.innerHTML = date
 console.log('xxxxxx')
   // get all requests with nested employees on load
-  axios.get(`${baseURL}/shifts/requests`)
+  axios.get(`${baseURL}/requests`)
   .then(result => {
 console.log('rrrrrrresult', result)
     // filter the requests for the current date
@@ -30,15 +26,15 @@ console.log('rrrrrrresult', result)
 
     ofDayRequest.forEach(request => {
 
-      request.employees.forEach(employee => {
+      console.log('request', request)
 
-        let name = employee.first_name
+        const name = request.employees[0].first_name
 
-        // /shifts
-        axios.get(`${baseURL}/shifts/user-shifts`)
+
+        axios.get(`${baseURL}/shifts`, { headers: { authorization: token }})
           .then(userShifts => {
-
-            const allShifts  = userShifts.data.result
+console.log('userShiftsssssss', userShifts)
+            const allShifts  = userShifts.data
 
             allShifts.forEach(shift => {
               if(shift.date.slice(0, 10) === date && shift.request_id === 0  ) {
@@ -74,7 +70,7 @@ console.log('rrrrrrresult', result)
                 takeButton.addEventListener('click', toggleStage)
                 requestBox.setAttribute('data-reqid', request.id)
                 requestBox.setAttribute('data-shiftid', request.shift_id)
-                requestBox.setAttribute('data-employeeid', employee.id)
+                requestBox.setAttribute('data-employeeid', request.employees_id)
                 requestBox.classList.add('request')
                 requestContent.innerHTML = `${name}: ${requestTime}-${requestEndTime}:00`
                 takeButton.innerHTML = 'Take Shift'
@@ -89,7 +85,8 @@ console.log('rrrrrrresult', result)
               }
             })
           })
-      })
+
+
     })
   })
 }

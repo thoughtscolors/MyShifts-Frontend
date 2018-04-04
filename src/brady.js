@@ -76,3 +76,8 @@ const updateEmployeesShifts = (employee_id, shift_id, userId) => {
     })
 
 }
+
+const logOut = () => {
+  localStorage.clear()
+  location.assign('index.html')
+}

@@ -3,15 +3,15 @@ const baseURL = 'http://localhost:3000'
 document.addEventListener('DOMContentLoaded', () => {
   $('.tab a').on('click', function (e) {
   e.preventDefault();
-  console.log('eeeeee', e)
+  // console.log('eeeeee', e)
   $(this).parent().addClass('active');
-  console.log('what is this', this)
+  // console.log('what is this', this)
   $(this).parent().siblings().removeClass('active');
-  
+
   var href = $(this).attr('href');
   $('.forms > form').hide();
 
-  console.log($('.forms > form'))
+  // console.log($('.forms > form'))
   $(href).fadeIn(500);
 });
 
@@ -32,16 +32,11 @@ const signup = (event) => {
 
   axios.post(`${baseURL}/signup`, {first_name, last_name, email, password})
     .then(result => {
-console.log('xxxxxxx', result)
-      
+// console.log('xxxxxxx', result)
+      location.assign('index.html')
     })
     .catch(err => {
       console.log(err)
     })
 
 }
-
-
-
-
-

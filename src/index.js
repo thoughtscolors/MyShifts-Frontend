@@ -3,7 +3,7 @@ let nowDate = new Date();
 let day = `0${nowDate.getDate()}`.slice(-2)
 let month = `0${nowDate.getMonth()+1}`.slice(-2)
 let date = `${nowDate.getFullYear()}-${month}-${day}`
-let userName 
+let userName
 let userId
 
 const currentDate = document.querySelector('#current-date')
@@ -18,9 +18,10 @@ const renderPage = () => {
 console.log('rendering page');
 const token = JSON.parse(localStorage.getItem('authorization'))
 const scheduleHeader = document.querySelector('.schedule-header')
+scheduleHeader.textContent = date
 
 
-// get all logged in employee's shifts 
+// get all logged in employee's shifts
 axios.get(`${baseURL}/shifts`, { headers: { authorization: token }})
   .then(userShifts => {
     const ofDayShift = userShifts.data.filter(shift => shift.date.slice(0, 10) === date)
@@ -41,11 +42,11 @@ axios.get(`${baseURL}/shifts`, { headers: { authorization: token }})
       userShiftBox.classList.add('current')
       shiftContent.innerHTML = `Your shift: ${startTime}-${endTime}:00`
       releaseButton.innerHTML = 'Release Shift'
-  
+
       if(!userShiftBox.querySelector('button')) {
         userShiftBox.appendChild(releaseButton)
       }
-  
+
       if (userShiftBox.classList.contains('staged-release')) {
         userShiftBox.classList.remove('staged-release')
       }
@@ -54,10 +55,10 @@ axios.get(`${baseURL}/shifts`, { headers: { authorization: token }})
     // get all requests with nested employees on load
   axios.get(`${baseURL}/requests`)
     .then(result => {
-      
+
       // filter the requests for the current date
       const ofDayRequest = result.data.result.filter(request => request.date.slice(0, 10) === date)
-    
+
       ofDayRequest.forEach(request => {
         let requestTime = request.start.slice(0, 5)
         let requestEndTime = Number(requestTime.slice(0,2)) + 4
@@ -123,7 +124,7 @@ const confirm = () => {
       shiftButton.innerHTML = 'Take Shift'
 
     } else if (allShiftBoxes[i].classList.contains('staged-take-shift')) {
-      
+
       let request_id = allShiftBoxes[i].dataset.reqid
       let new_request_id = 0
 

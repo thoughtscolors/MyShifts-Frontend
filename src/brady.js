@@ -42,7 +42,10 @@ const toggleStage = (event) => {
 }
 
 const createRequest = (employee_id, shift_id, start, date) => {
-      axios.post(`${baseURL}/requests`, {employee_id, shift_id, start, date})
+  const token = JSON.parse(localStorage.getItem('authorization'))
+      axios.post(`${baseURL}/requests`,
+        {employee_id, shift_id, start, date},
+        { headers: { authorization: token }})
         .then(res => {
           console.log('res in brady53', res)
           const request_id = res.data.result.id
@@ -59,7 +62,8 @@ const createRequest = (employee_id, shift_id, start, date) => {
 }
 
 const deleteRequestWhenTaken = (requestId) => {
-  axios.delete(`${baseURL}/requests/${requestId}`)
+  const token = JSON.parse(localStorage.getItem('authorization'))
+  axios.delete(`${baseURL}/requests/${requestId}`, { headers: { authorization: token }})
     .then(res => {
       console.log(res )
     })
@@ -69,8 +73,8 @@ const deleteRequestWhenTaken = (requestId) => {
 }
 
 const updateEmployeesShifts = (employee_id, shift_id, userId) => {
-
-  axios.patch(`${baseURL}/shifts`, {employee_id, shift_id, userId})
+const token = JSON.parse(localStorage.getItem('authorization'))
+  axios.patch(`${baseURL}/shifts`, {employee_id, shift_id, userId}, { headers: { authorization: token }})
     .then(result => {
 
       console.log('result in updateEmployeesShifts',result)

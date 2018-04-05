@@ -53,7 +53,7 @@ axios.get(`${baseURL}/shifts`, { headers: { authorization: token }})
     })
 
     // get all requests with nested employees on load
-  axios.get(`${baseURL}/requests`)
+  axios.get(`${baseURL}/requests`, { headers: { authorization: token }})
     .then(result => {
 
       // filter the requests for the current date

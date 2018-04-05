@@ -129,15 +129,13 @@ const confirm = () => {
       let new_request_id = 0
 
       deleteRequestWhenTaken(request_id)
-
       updateEmployeesShifts(employee_id, shift_id, userId)
-     // addToUserShiftsWhenTaken(shift_id, start, date, new_request_id)
 
       allShiftBoxes[i].classList.remove('staged-take-shift')
       allShiftBoxes[i].classList.remove('request')
       allShiftBoxes[i].classList.add('current')
       allShiftBoxes[i].dataset.reqid = 0
-      allShiftBoxes[i].dataset.employeeid = 1
+      allShiftBoxes[i].dataset.employeeid = userId
       shiftContentBox.innerHTML = `Your Shift: ${shiftPeriod}`
       shiftButton.innerHTML = 'Release Shift'
     }

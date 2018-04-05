@@ -27,7 +27,7 @@ axios.get(`${baseURL}/shifts`, { headers: { authorization: token }})
     const ofDayShift = userShifts.data.filter(shift => shift.date.slice(0, 10) === date)
     userName = userShifts.data[0].first_name
     userId = userShifts.data[0].employee_id
-    currentDate.innerHTML = `Hi ${userName} Today's ${date}`
+    currentDate.innerHTML = `Hi ${userName}. Today is ${date}`
 
 
     ofDayShift.forEach(shift => {

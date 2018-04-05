@@ -1,14 +1,17 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
 
 html, body {
 	position: relative;
 	height: 100%;
 	font-size: 16px;
+	background-color: #f9f9f9;
+	font-family: 'Montserrat', sans-serif;
 }
 
 html, body, span, p, div, h1, h2, h3, h4, h5, h6, a, ul, ol, li, th, td, dt, dl, dd, b, strong, i {
-	font-family: 'Raleway', 'Open Sans', 'helvetica', 'sans-serif';
+	font-family: 'Montserrat', sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -17,7 +20,7 @@ h1, h2, h3, h4, h5, h6 {
 
 pre, code, code span {
 	font-size: 14px;
-	font-family: 'Consolas', sans-serif !important;
+	font-family: 'Montserrat', sans-serif;
 	text-shadow: none !important;
 	-webkit-text-shadow: none !important;
 }
@@ -135,6 +138,38 @@ button {
 	/* opacity: .5; */
 }
 
+#legend {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	text-align: center;
+	align-items: center;
+	justify-content:space-between;
+	margin-bottom: .5em;
+}
+
+#round1 {
+  border-radius: 15px 50px;
+	height: 16px;
+	width: 16px;
+	background-color: #4FC4CF;
+	margin-right: .5em;
+}
+
+#round2 {
+	border-radius: 15px 50px;
+	height: 16px;
+	width: 16px;
+	background-color: #F7493B;
+	margin-right: .5em;
+}
+
+.leg-col {
+	display: flex;
+	justify-content: center;
+	flex-direction: row;
+}
+
 .shift-text {
 	margin: .2em;
 }
@@ -175,7 +210,7 @@ button {
 	max-width: 320px;
 	width: 100%;
 	border-top: 1px solid #f8f8f8;
-	font-family: 'Raleway', 'helvetica', 'sans-serif';
+	font-family: 'Montserrat', sans-serif;
 }
 
 .article {
@@ -339,9 +374,28 @@ button {
     text-align: right !important;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1300px) {
+	.pignose-calendar {
+		width: 600px;
+		/* margin-right: 1em; */
+	}
+}
+
+@media screen and (max-width: 1169px) {
+	.pignose-calendar {
+		width: 540px;
+		/* margin-right: 1em; */
+	}
+}
+
+@media screen and (max-width: 1100px) {
 	html, body {
 		/* font-size: 1.2em; */
+	}
+
+	.pignose-calendar {
+		width: 80%;
+		/* margin-right: 1em; */
 	}
 
 	.article {
@@ -359,6 +413,11 @@ button {
 @media screen and (max-width: 599px) {
 	html, body {
 		/* font-size: 14px; */
+	}
+
+	.pignose-calendar {
+		width: 80%;
+		/* margin-right: 1em; */
 	}
 
 	.header h1 {

@@ -63,7 +63,7 @@ $(function() {
     // get all requests with nested employees on load
     axios.all([
       axios.get(`${baseURL}/shifts`, { headers: { authorization: token } }), // /shifts
-      axios.get(`${baseURL}/requests`)  // /requests
+      axios.get(`${baseURL}/requests`, { headers: { authorization: token } })  // /requests
     ])
     .then(axios.spread((getUserShifts, getRequests) => {
       // filter the requests for the current date

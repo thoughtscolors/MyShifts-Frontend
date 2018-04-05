@@ -53,7 +53,7 @@ axios.get(`${baseURL}/shifts`, { headers: { authorization: token }})
     })
 
     // get all requests with nested employees on load
-  axios.get(`${baseURL}/requests`)
+  axios.get(`${baseURL}/requests`, { headers: { authorization: token }})
     .then(result => {
 
       // filter the requests for the current date
@@ -129,9 +129,7 @@ const confirm = () => {
       let new_request_id = 0
 
       deleteRequestWhenTaken(request_id)
-
       updateEmployeesShifts(employee_id, shift_id, userId)
-     // addToUserShiftsWhenTaken(shift_id, start, date, new_request_id)
 
       allShiftBoxes[i].classList.remove('staged-take-shift')
       allShiftBoxes[i].classList.remove('request')

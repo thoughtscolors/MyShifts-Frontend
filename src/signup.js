@@ -15,10 +15,20 @@ document.addEventListener('DOMContentLoaded', () => {
   $(href).fadeIn(500);
 });
 
+const signupTab = document.querySelector('#signup-tab')
+console.log(signupTab);
+signupTab.addEventListener('click', scroll)
+
 const signupButton = document.querySelector('#sign-up')
 signupButton.onclick = signup
 
 })
+
+const scroll = () => {
+  console.log('should scroll');
+  // document.body.scrollTop = document.body.scrollHeight
+  window.scrollTo(0, document.body.scrollHeight || document.documentElement.scrollHeight)
+}
 
 const signup = (event) => {
   event.preventDefault()

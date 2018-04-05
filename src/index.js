@@ -137,7 +137,7 @@ const confirm = () => {
       allShiftBoxes[i].classList.remove('request')
       allShiftBoxes[i].classList.add('current')
       allShiftBoxes[i].dataset.reqid = 0
-      allShiftBoxes[i].dataset.employeeid = 1
+      allShiftBoxes[i].dataset.employeeid = userId
       shiftContentBox.innerHTML = `Your Shift: ${shiftPeriod}`
       shiftButton.innerHTML = 'Release Shift'
     }

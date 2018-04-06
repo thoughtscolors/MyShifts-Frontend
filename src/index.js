@@ -103,6 +103,7 @@ let columnRight = document.querySelector('#col-right').children
 const confirm = () => {
   console.log('userName', userName)
   const allShiftBoxes = document.querySelector('#col-right').children
+  const currentDate = document.querySelector('.schedule-header').textContent
 
   for(let i = 0; i < allShiftBoxes.length; i++) {
 
@@ -115,7 +116,7 @@ const confirm = () => {
       let shiftButton = allShiftBoxes[i].lastChild
     if(allShiftBoxes[i].classList.contains('staged-release')) {
 
-      createRequest(employee_id, shift_id, start, date)
+      createRequest(employee_id, shift_id, start, currentDate)
 
       allShiftBoxes[i].classList.remove('staged-release')
       allShiftBoxes[i].classList.remove('current')
@@ -128,7 +129,6 @@ const confirm = () => {
       let request_id = allShiftBoxes[i].dataset.reqid
       let new_request_id = 0
       let startTime = allShiftBoxes[i].id
-      let currentDate = document.querySelector('.schedule-header').textContent
       console.log(startTime, currentDate, employee_id);
 
       deleteRequestWhenTaken(request_id)

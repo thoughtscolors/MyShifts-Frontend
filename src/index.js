@@ -116,6 +116,7 @@ const confirm = () => {
     if(allShiftBoxes[i].classList.contains('staged-release')) {
 
       createRequest(employee_id, shift_id, start, date)
+      sendEmailRequest(userId)
 
       allShiftBoxes[i].classList.remove('staged-release')
       allShiftBoxes[i].classList.remove('current')
@@ -130,6 +131,7 @@ const confirm = () => {
 
       deleteRequestWhenTaken(request_id)
       updateEmployeesShifts(employee_id, shift_id, userId)
+      sendEmailTakeShift(userId, employee_id)
 
       allShiftBoxes[i].classList.remove('staged-take-shift')
       allShiftBoxes[i].classList.remove('request')

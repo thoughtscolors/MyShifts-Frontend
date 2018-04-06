@@ -86,3 +86,19 @@ const logOut = () => {
   localStorage.clear()
   location.assign('index.html')
 }
+
+const sendEmailRequest = (userId) => {
+  console.log('userId in frontend', userId);
+  
+  axios.get(`${baseURL}/send-email-request/${userId}`)
+    .then(result => {
+      console.log('result in sendEmailRequest brady', result)
+    })
+}
+
+// const sendEmailTakeShift = (userId, employeeId) => {
+//   axios.get(`${baseURL}/send-email-takeShift`, {userId, employee_id: employeeId}, { headers: { authorization: token }})
+//     .then(result => {
+//       console.log('result in sendEmailTakeShift brady', result)
+//     })
+// }

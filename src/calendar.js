@@ -17,8 +17,6 @@ $(function() {
      * @obj.storage.activeDates is all toggled data, If you use toggle type calendar.
      * @obj.storage.events is all events associated to this date
      */
-  // console.log('wwwww', date[0]._i)
-  // console.log('qqqqqqq', obj)
     var $calendar = obj.calendar;
     var $box = $calendar.parent().siblings('.box').show();
     let box = document.querySelector('.box')
@@ -38,8 +36,6 @@ $(function() {
     if(date[1] !== null) {
         text += date[1].format('YYYY-MM-DD');
     }
-    // console.log('tttttt', text)
-    // console.log('blurb = ', );
     const scheduleHeader = document.querySelector('.schedule-header')
     scheduleHeader.innerHTML = text
 

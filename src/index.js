@@ -8,18 +8,14 @@ let userId
 
 const currentDate = document.querySelector('#current-date')
 
-
 document.addEventListener('DOMContentLoaded', () => {
   renderPage()
 })
 
 const renderPage = () => {
-
-console.log('rendering page');
 const token = JSON.parse(localStorage.getItem('authorization'))
 const scheduleHeader = document.querySelector('.schedule-header')
 scheduleHeader.textContent = date
-
 
 // get all logged in employee's shifts
 axios.get(`${baseURL}/shifts`, { headers: { authorization: token }})
@@ -28,7 +24,6 @@ axios.get(`${baseURL}/shifts`, { headers: { authorization: token }})
     userName = userShifts.data[0].first_name
     userId = userShifts.data[0].employee_id
     currentDate.innerHTML = `Hi ${userName}. Today is ${date}`
-
 
     ofDayShift.forEach(shift => {
       let startTime = `${shift.start}`.slice(0, 5)
@@ -55,7 +50,6 @@ axios.get(`${baseURL}/shifts`, { headers: { authorization: token }})
     // get all requests with nested employees on load
   axios.get(`${baseURL}/requests`, { headers: { authorization: token }})
     .then(result => {
-
       // filter the requests for the current date
       const ofDayRequest = result.data.result.filter(request => request.date.slice(0, 10) === date)
 
@@ -96,13 +90,11 @@ axios.get(`${baseURL}/shifts`, { headers: { authorization: token }})
   })
 }
 
-
 let columnRight = document.querySelector('#col-right').children
 
-
 const confirm = () => {
-  console.log('userName', userName)
   const allShiftBoxes = document.querySelector('#col-right').children
+  const scheduleHeader = document.querySelector('.schedule-header')
 
   for(let i = 0; i < allShiftBoxes.length; i++) {
 
@@ -115,8 +107,7 @@ const confirm = () => {
       let shiftButton = allShiftBoxes[i].lastChild
     if(allShiftBoxes[i].classList.contains('staged-release')) {
 
-      createRequest(employee_id, shift_id, start, date)
-      sendEmailRequest(userId)
+      createRequest(employee_id, shift_id, start, scheduleHeader.textContent)
 
       allShiftBoxes[i].classList.remove('staged-release')
       allShiftBoxes[i].classList.remove('current')

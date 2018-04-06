@@ -72,9 +72,9 @@ const deleteRequestWhenTaken = (requestId) => {
     })
 }
 
-const updateEmployeesShifts = (employee_id, shift_id, userId) => {
+const updateEmployeesShifts = (employee_id, shift_id, userId, startTime, currentDate) => {
 const token = JSON.parse(localStorage.getItem('authorization'))
-  axios.patch(`${baseURL}/shifts`, {employee_id, shift_id, userId}, { headers: { authorization: token }})
+  axios.patch(`${baseURL}/shifts`, {employee_id, shift_id, userId, startTime, currentDate}, { headers: { authorization: token }})
     .then(result => {
 
       console.log('result in updateEmployeesShifts',result)

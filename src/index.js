@@ -114,7 +114,7 @@ const confirm = () => {
       let shiftPeriod = shiftContent.slice(-11)
       let shiftButton = allShiftBoxes[i].lastChild
     if(allShiftBoxes[i].classList.contains('staged-release')) {
-
+    console.log(employee_id, shift_id, start, date);
       createRequest(employee_id, shift_id, start, date)
 
       allShiftBoxes[i].classList.remove('staged-release')
@@ -124,12 +124,15 @@ const confirm = () => {
       shiftButton.innerHTML = 'Take Shift'
 
     } else if (allShiftBoxes[i].classList.contains('staged-take-shift')) {
-
+      let employee_id = allShiftBoxes[i].dataset.employeeid
       let request_id = allShiftBoxes[i].dataset.reqid
       let new_request_id = 0
+      let startTime = allShiftBoxes[i].id
+      let currentDate = document.querySelector('.schedule-header').textContent
+      console.log(startTime, currentDate, employee_id);
 
       deleteRequestWhenTaken(request_id)
-      updateEmployeesShifts(employee_id, shift_id, userId)
+      updateEmployeesShifts(employee_id, shift_id, userId, startTime, currentDate)
 
       allShiftBoxes[i].classList.remove('staged-take-shift')
       allShiftBoxes[i].classList.remove('request')

@@ -121,7 +121,7 @@ const confirm = () => {
       allShiftBoxes[i].classList.remove('staged-release')
       allShiftBoxes[i].classList.remove('current')
       allShiftBoxes[i].classList.add('request')
-      shiftContentBox.innerHTML = `${userName}: ${shiftPeriod}`
+      shiftContentBox.innerHTML = `Available: ${shiftPeriod}`
       shiftButton.innerHTML = 'Take Shift'
 
     } else if (allShiftBoxes[i].classList.contains('staged-take-shift')) {

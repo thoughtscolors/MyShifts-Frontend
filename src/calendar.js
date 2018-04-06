@@ -17,8 +17,6 @@ $(function() {
      * @obj.storage.activeDates is all toggled data, If you use toggle type calendar.
      * @obj.storage.events is all events associated to this date
      */
-  // console.log('wwwww', date[0]._i)
-  // console.log('qqqqqqq', obj)
     var $calendar = obj.calendar;
     var $box = $calendar.parent().siblings('.box').show();
     let box = document.querySelector('.box')
@@ -38,18 +36,19 @@ $(function() {
     if(date[1] !== null) {
         text += date[1].format('YYYY-MM-DD');
     }
-    // console.log('tttttt', text)
-    // console.log('blurb = ', );
     const scheduleHeader = document.querySelector('.schedule-header')
     scheduleHeader.innerHTML = text
 
     // JUSTIN
-    // clears elements color, textContent, and button for new data to fill
+    // clears elements color, textContent, button for new data to fill, and datasets in attribute
     document.querySelectorAll('.shift').forEach(shift => {
       shift.classList = ''
       shift.classList.add('shift')
       shift.style.backgroundColor = ''
       shift.querySelector('.shift-text').textContent = ''
+      shift.removeAttribute('data-reqid')
+      shift.removeAttribute('data-shiftid')
+      shift.removeAttribute('data-employeeid')
       if (shift.querySelectorAll('button')) {
         shift.querySelectorAll('button').forEach(button => {
           shift.removeChild(button)
@@ -58,7 +57,6 @@ $(function() {
     })
 
     let token = JSON.parse(localStorage.getItem('authorization'))
-    console.log(token, 'renderpage');
 
     // get all requests with nested employees on load
     axios.all([

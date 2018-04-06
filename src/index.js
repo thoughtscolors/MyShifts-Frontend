@@ -114,7 +114,7 @@ const confirm = () => {
       let shiftPeriod = shiftContent.slice(-11)
       let shiftButton = allShiftBoxes[i].lastChild
     if(allShiftBoxes[i].classList.contains('staged-release')) {
-    console.log(employee_id, shift_id, start, date);
+
       createRequest(employee_id, shift_id, start, date)
 
       allShiftBoxes[i].classList.remove('staged-release')

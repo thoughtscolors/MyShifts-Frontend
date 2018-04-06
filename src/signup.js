@@ -1,5 +1,3 @@
-const baseURL = 'http://localhost:3000'
-
 document.addEventListener('DOMContentLoaded', () => {
   $('.tab a').on('click', function (e) {
   e.preventDefault();

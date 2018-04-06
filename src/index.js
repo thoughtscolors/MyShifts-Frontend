@@ -1,4 +1,3 @@
-const baseURL = 'http://localhost:3000'
 let nowDate = new Date();
 let day = `0${nowDate.getDate()}`.slice(-2)
 let month = `0${nowDate.getMonth()+1}`.slice(-2)

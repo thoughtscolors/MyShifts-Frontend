@@ -8,14 +8,18 @@ let userId
 
 const currentDate = document.querySelector('#current-date')
 
+
 document.addEventListener('DOMContentLoaded', () => {
   renderPage()
 })
 
 const renderPage = () => {
+
+console.log('rendering page');
 const token = JSON.parse(localStorage.getItem('authorization'))
 const scheduleHeader = document.querySelector('.schedule-header')
 scheduleHeader.textContent = date
+
 
 // get all logged in employee's shifts
 axios.get(`${baseURL}/shifts`, { headers: { authorization: token }})
@@ -24,6 +28,7 @@ axios.get(`${baseURL}/shifts`, { headers: { authorization: token }})
     userName = userShifts.data[0].first_name
     userId = userShifts.data[0].employee_id
     currentDate.innerHTML = `Hi ${userName}. Today is ${date}`
+
 
     ofDayShift.forEach(shift => {
       let startTime = `${shift.start}`.slice(0, 5)
@@ -50,6 +55,7 @@ axios.get(`${baseURL}/shifts`, { headers: { authorization: token }})
     // get all requests with nested employees on load
   axios.get(`${baseURL}/requests`, { headers: { authorization: token }})
     .then(result => {
+
       // filter the requests for the current date
       const ofDayRequest = result.data.result.filter(request => request.date.slice(0, 10) === date)
 
@@ -90,11 +96,14 @@ axios.get(`${baseURL}/shifts`, { headers: { authorization: token }})
   })
 }
 
+
 let columnRight = document.querySelector('#col-right').children
 
+
 const confirm = () => {
+  console.log('userName', userName)
   const allShiftBoxes = document.querySelector('#col-right').children
-  const scheduleHeader = document.querySelector('.schedule-header')
+  const currentDate = document.querySelector('.schedule-header').textContent
 
   for(let i = 0; i < allShiftBoxes.length; i++) {
 
@@ -107,22 +116,23 @@ const confirm = () => {
       let shiftButton = allShiftBoxes[i].lastChild
     if(allShiftBoxes[i].classList.contains('staged-release')) {
 
-      createRequest(employee_id, shift_id, start, scheduleHeader.textContent)
+      createRequest(employee_id, shift_id, start, currentDate)
 
       allShiftBoxes[i].classList.remove('staged-release')
       allShiftBoxes[i].classList.remove('current')
       allShiftBoxes[i].classList.add('request')
-      shiftContentBox.innerHTML = `${userName}: ${shiftPeriod}`
+      shiftContentBox.innerHTML = `Available: ${shiftPeriod}`
       shiftButton.innerHTML = 'Take Shift'
 
     } else if (allShiftBoxes[i].classList.contains('staged-take-shift')) {
-
+      let employee_id = allShiftBoxes[i].dataset.employeeid
       let request_id = allShiftBoxes[i].dataset.reqid
       let new_request_id = 0
+      let startTime = allShiftBoxes[i].id
+      console.log(startTime, currentDate, employee_id);
 
       deleteRequestWhenTaken(request_id)
-      updateEmployeesShifts(employee_id, shift_id, userId)
-      //sendEmailTakeShift(userId, employee_id)
+      updateEmployeesShifts(employee_id, shift_id, userId, startTime, currentDate)
 
       allShiftBoxes[i].classList.remove('staged-take-shift')
       allShiftBoxes[i].classList.remove('request')

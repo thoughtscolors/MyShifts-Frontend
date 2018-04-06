@@ -17,8 +17,6 @@ $(function() {
      * @obj.storage.activeDates is all toggled data, If you use toggle type calendar.
      * @obj.storage.events is all events associated to this date
      */
-  // console.log('wwwww', date[0]._i)
-  // console.log('qqqqqqq', obj)
     var $calendar = obj.calendar;
     var $box = $calendar.parent().siblings('.box').show();
     let box = document.querySelector('.box')
@@ -38,8 +36,6 @@ $(function() {
     if(date[1] !== null) {
         text += date[1].format('YYYY-MM-DD');
     }
-    // console.log('tttttt', text)
-    // console.log('blurb = ', );
     const scheduleHeader = document.querySelector('.schedule-header')
     scheduleHeader.innerHTML = text
 
@@ -68,8 +64,13 @@ $(function() {
       axios.get(`${baseURL}/requests`, { headers: { authorization: token } })  // /requests
     ])
     .then(axios.spread((getUserShifts, getRequests) => {
+      console.log('Get All User Shifts === ', getUserShifts);
+      console.log('Get All Requests === ', getRequests);
+
       // filter the requests for the current date
       const ofDayShift = getUserShifts.data.filter(shift => shift.date.slice(0, 10) === scheduleHeader.textContent)
+
+      console.log('Of day shifts === ', ofDayShift);
 
       ofDayShift.forEach(shift => {
         let startTime = `${shift.start}`.slice(0, 5)
@@ -95,6 +96,8 @@ $(function() {
 
       // filter the requests for the current date
       const ofDayRequest = getRequests.data.result.filter(request => request.date.slice(0, 10) === scheduleHeader.textContent)
+
+      console.log('Of day requests === ', ofDayRequest);
 
       ofDayRequest.forEach(request => {
         let requestTime = request.start.slice(0, 5)

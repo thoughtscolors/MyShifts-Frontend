@@ -131,7 +131,7 @@ const confirm = () => {
 
       deleteRequestWhenTaken(request_id)
       updateEmployeesShifts(employee_id, shift_id, userId)
-      sendEmailTakeShift(userId, employee_id)
+      //sendEmailTakeShift(userId, employee_id)
 
       allShiftBoxes[i].classList.remove('staged-take-shift')
       allShiftBoxes[i].classList.remove('request')

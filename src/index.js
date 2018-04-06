@@ -8,18 +8,14 @@ let userId
 
 const currentDate = document.querySelector('#current-date')
 
-
 document.addEventListener('DOMContentLoaded', () => {
   renderPage()
 })
 
 const renderPage = () => {
-
-console.log('rendering page');
 const token = JSON.parse(localStorage.getItem('authorization'))
 const scheduleHeader = document.querySelector('.schedule-header')
 scheduleHeader.textContent = date
-
 
 // get all logged in employee's shifts
 axios.get(`${baseURL}/shifts`, { headers: { authorization: token }})
@@ -28,7 +24,6 @@ axios.get(`${baseURL}/shifts`, { headers: { authorization: token }})
     userName = userShifts.data[0].first_name
     userId = userShifts.data[0].employee_id
     currentDate.innerHTML = `Hi ${userName} Today's ${date}`
-
 
     ofDayShift.forEach(shift => {
       let startTime = `${shift.start}`.slice(0, 5)
@@ -96,9 +91,7 @@ axios.get(`${baseURL}/shifts`, { headers: { authorization: token }})
   })
 }
 
-
 let columnRight = document.querySelector('#col-right').children
-
 
 const confirm = () => {
   console.log('userName', userName)

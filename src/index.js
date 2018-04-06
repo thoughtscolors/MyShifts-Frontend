@@ -50,7 +50,6 @@ axios.get(`${baseURL}/shifts`, { headers: { authorization: token }})
     // get all requests with nested employees on load
   axios.get(`${baseURL}/requests`, { headers: { authorization: token }})
     .then(result => {
-
       // filter the requests for the current date
       const ofDayRequest = result.data.result.filter(request => request.date.slice(0, 10) === date)
 
@@ -94,7 +93,6 @@ axios.get(`${baseURL}/shifts`, { headers: { authorization: token }})
 let columnRight = document.querySelector('#col-right').children
 
 const confirm = () => {
-  console.log('userName', userName)
   const allShiftBoxes = document.querySelector('#col-right').children
   const scheduleHeader = document.querySelector('.schedule-header')
 

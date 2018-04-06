@@ -64,13 +64,8 @@ $(function() {
       axios.get(`${baseURL}/requests`, { headers: { authorization: token } })  // /requests
     ])
     .then(axios.spread((getUserShifts, getRequests) => {
-      console.log('Get All User Shifts === ', getUserShifts);
-      console.log('Get All Requests === ', getRequests);
-
       // filter the requests for the current date
       const ofDayShift = getUserShifts.data.filter(shift => shift.date.slice(0, 10) === scheduleHeader.textContent)
-
-      console.log('Of day shifts === ', ofDayShift);
 
       ofDayShift.forEach(shift => {
         let startTime = `${shift.start}`.slice(0, 5)
@@ -96,8 +91,6 @@ $(function() {
 
       // filter the requests for the current date
       const ofDayRequest = getRequests.data.result.filter(request => request.date.slice(0, 10) === scheduleHeader.textContent)
-
-      console.log('Of day requests === ', ofDayRequest);
 
       ofDayRequest.forEach(request => {
         let requestTime = request.start.slice(0, 5)

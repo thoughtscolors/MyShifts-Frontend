@@ -78,7 +78,7 @@ axios.get(`${baseURL}/shifts`, { headers: { authorization: token }})
           if(requestBox.classList.contains('current')) {
             requestBox.classList.remove('current')
           }
-          requestContent.innerHTML = `${name}: ${requestTime}-${requestEndTime}:00`
+          requestContent.innerHTML = `Available: ${requestTime}-${requestEndTime}:00`
           takeButton.innerHTML = 'Take Shift'
 
           if(!requestBox.querySelector('button')) {

@@ -11,5 +11,5 @@ Future feature:
 
 Technolgies used:
 - Javascipt, HTML/CSS
-- Jquery (Calendar only)
+- JQuery (Calendar only)
 - axios (API calls)

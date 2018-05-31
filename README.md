@@ -13,3 +13,7 @@ Technolgies used:
 - Javascipt, HTML/CSS
 - JQuery (Calendar only)
 - axios (API calls)
+
+
+Click image for demo
+[![MyShifts Demo](http://img.youtube.com/vi/hDmTm6w9BW4/0.jpg)](https://youtu.be/hDmTm6w9BW4)
